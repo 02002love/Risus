@@ -1,0 +1,99 @@
+//
+//  Prefix.pch
+//  Risus
+//
+//  Created by JinWei on 15/8/21.
+//  Copyright (c) 2015年 SongJinWei. All rights reserved.
+//
+
+#ifndef Risus_Prefix_pch
+#define Risus_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+
+
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+
+#import "RootController.h"
+
+//引入工具类
+
+#import "MJRefresh.h"
+#import "MBProgressHUD+MJ.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "UIImageView+AFNetworking.h"
+//加载 gif 动态图
+#import "UIImageView+WebCache.h"
+#import "UIImageView+ProgressView.h"
+
+#import "UIImage+GIF.h"
+
+//第三方登录
+//#import "ShareSDK/ShareSDK.h"
+//#import "WeiboApi.h"
+//#import "WeiboSDK.h"
+//#import "WXApi.h"
+//#import <RennSDK/RennSDK.h>
+//#import <TencentOpenAPI/QQApiInterface.h>
+//#import <TencentOpenAPI/TencentOAuth.h>
+
+
+//极光推送
+#import "APService.h"
+
+//定义屏幕宽高
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
+//cell 头和脚的高度
+#define HEADHEIGHT 40
+#define FOOTHEIGHT 25
+
+//cell的间隙
+#define SPACE 5
+
+//字体大小
+#define FONTSIZE 14
+#endif
+
+//自定义 Log 函数
+#ifdef DEBUG
+#define SKLog(...) NSLog(__VA_ARGS__)
+#else
+#define SKLog(...)
+#endif
+
+// APP版本号
+#define VERSION @"1.0"
+
+
+//图片,段子,声音接口
+//精华
+#define BETTER @"http://api.budejie.com/api/api_open.php?c=%@&a=list&from=ios&per=20&page=%d&type=%d&client=iphone&market=&ver=2.4&device=iPhone%204&uid=&sex=&udid=&mac=6C:3E:6D:3E:00:1B&openudid=7b054509c94dd8d95dca2765e72f6810f016b599&asid=37BCB6BC-D5A4-4DDA-98B6-2978B06354F7&jbk=0&appname=baisibudejie"
+//最新
+#define NEW @"http://api.budejie.com/api/api_open.php?c=%@&a=newlist&from=ios&per=20&page=%d&type=%d&client=iphone&market=&ver=2.4&device=iPhone%204&uid=&sex=&udid=&mac=6C:3E:6D:3E:00:1B&openudid=7b054509c94dd8d95dca2765e72f6810f016b599&asid=37BCB6BC-D5A4-4DDA-98B6-2978B06354F7&jbk=0&appname=baisibudejie"
+//穿越
+#define CROSS @"http://api.budejie.com/api/api_open.php?c=%@&a=list&from=ios&per=20&page=%d&type=%d&order=timewarp&client=iphone&market=&ver=2.4&device=iPhone%204&uid=&sex=&udid=&mac=6C:3E:6D:3E:00:1B&openudid=7b054509c94dd8d95dca2765e72f6810f016b599&asid=37BCB6BC-D5A4-4DDA-98B6-2978B06354F7&jbk=0&appname=baisibudejie"
+
+
+
+//视频接口
+//精华
+#define VIDEOBETTER @"http://api.budejie.com/api/api_open.php?a=list&appname=baisibudejie_NEW&asid=70F645DA-42A8-464F-ABF7-7AE8DF7550E2&c=video&client=iphone&device=iPhone%204&from=ios&jbk=0&mac=&market=&openudid=046c214ce303c9da2c099ec62cea4dc8c02ec268&page=%d&per=20&type=41&udid=&ver=3.1.2"
+//最新
+#define VIDEONEW @"http://api.budejie.com/api/api_open.php?a=newlist&appname=baisibudejie_NEW&asid=70F645DA-42A8-464F-ABF7-7AE8DF7550E2&c=video&client=iphone&device=iPhone%204&from=ios&jbk=0&mac=&market=&openudid=046c214ce303c9da2c099ec62cea4dc8c02ec268&page=%d&per=20&type=41&udid=&ver=3.1.2"
+//穿越
+#define VIDEOCROSS @"http://api.budejie.com/api/api_open.php?a=list&appname=baisibudejie_NEW&asid=70F645DA-42A8-464F-ABF7-7AE8DF7550E2&c=video&client=iphone&device=iPhone%204&from=ios&jbk=0&mac=&market=&openudid=046c214ce303c9da2c099ec62cea4dc8c02ec268&order=timewarp&page=%d&per=20&type=41&udid=&ver=3.1.2"
+
+
+
+//顶按钮的接口
+#define DING @"http://api.budejie.com/api/api_open.php?a=love&appname=baisishequ&asid=5684E21E-F2C0-49D5-85CC-EA62CEA46A0B&c=post&client=iphone&device=iPhone%204&id=%d&jbk=0&mac=&market=&openudid=c312254df2a5167ddcfcd5280e1559fe2906c040&tj_from=voice&udid=&ver=3.6.1"
+
+#endif
