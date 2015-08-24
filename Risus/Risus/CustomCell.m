@@ -63,7 +63,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
         [self createCustomCell];
-         manager = [AFHTTPRequestOperationManager manager];
+        manager = [AFHTTPRequestOperationManager manager];
         
     }
     
@@ -199,23 +199,20 @@
     
     NSString * dingURL = [NSString stringWithFormat:DING,_dingCaiUrlId];
     SKLog(@"%@",dingURL);
-   
-    [self DingData:dingURL];
     
-     SKLog(@"===00000000000===");
+    [self DingData:dingURL];
 }
 
 -(void)DingData:(NSString *)url{
     
-    [manager GET:@"http://api.budejie.com/api/api_open.php?a=love&appname=baisishequ&asid=5684E21E-F2C0-49D5-85CC-EA62CEA46A0B&c=post&client=iphone&device=iPhone%204&id=15268424&jbk=0&mac=&market=&openudid=c312254df2a5167ddcfcd5280e1559fe2906c040&tj_from=voice&udid=&ver=3.6.1" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         num = responseObject;
         [self.dingButton setTitle:num forState:UIControlStateNormal];
-        SKLog(@"===singgegege===");
         [MBProgressHUD showSuccess:@"点赞成功"];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [MBProgressHUD showError:@"点赞失败"];
     }];
-
+    
     
 }
 //点击声音播放按钮
