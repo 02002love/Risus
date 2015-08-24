@@ -77,12 +77,12 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     switch (indexPath.row) {
         case 0:{//请求新版本
-            [MBProgressHUD showMessage:@"正在检查新版本..."];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUD];
-                [MBProgressHUD showError:@"没有新版本,过几天再来吧..."];
-                
-            });
+//            [MBProgressHUD showMessage:@"正在检查新版本..."];
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [MBProgressHUD hideHUD];
+//                [MBProgressHUD showError:@"没有新版本,过几天再来吧..."];
+//                
+//            });
             
         }
             break;

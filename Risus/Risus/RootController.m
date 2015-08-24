@@ -11,6 +11,7 @@
 #import "CustomCell.h"
 #import "MineController.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "ShowPictureController.h"
 
 @interface RootController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)NSMutableArray * dataArray;
@@ -188,15 +189,10 @@
         [self.navigationController pushViewController:voiceViewController animated:YES];
         
     };
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
     
     
-}
-
--(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return NO;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -206,4 +202,19 @@
     
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    SKLog(@"%ld",(long)indexPath.row);
+    NewModel * model = self.dataArray [indexPath.row];
+    
+    ShowPictureController * showPictureVC = [[ShowPictureController alloc]init];
+    showPictureVC.hidesBottomBarWhenPushed = YES;
+    showPictureVC.pictureName = model.image0;
+    showPictureVC.pictureHeight = model.height;
+    showPictureVC.pictureWidth = model.width;
+    [self presentViewController:showPictureVC animated:YES completion:nil];
+    
+    
+
+}
 @end

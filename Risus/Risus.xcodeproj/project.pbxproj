@@ -174,6 +174,7 @@
 		4E57EA531B86FB7900397B72 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E57EA521B86FB7900397B72 /* RootController.m */; };
 		4E57EA5A1B87075E00397B72 /* NewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E57EA591B87075E00397B72 /* NewModel.m */; };
 		4E57EA5D1B87453900397B72 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E57EA5C1B87453900397B72 /* CustomCell.m */; };
+		4E7215021B8AFB31006CE807 /* ShowPictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7215011B8AFB31006CE807 /* ShowPictureController.m */; };
 		4E8127131B899E84009D40A8 /* PrivacyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8127121B899E84009D40A8 /* PrivacyController.m */; };
 		4E8127161B899E98009D40A8 /* AboutUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8127151B899E98009D40A8 /* AboutUsController.m */; };
 		4E8127181B89C37E009D40A8 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4E8127171B89C37E009D40A8 /* about.html */; };
@@ -430,6 +431,8 @@
 		4E57EA591B87075E00397B72 /* NewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewModel.m; sourceTree = "<group>"; };
 		4E57EA5B1B87453900397B72 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		4E57EA5C1B87453900397B72 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		4E7215001B8AFB31006CE807 /* ShowPictureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPictureController.h; sourceTree = "<group>"; };
+		4E7215011B8AFB31006CE807 /* ShowPictureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPictureController.m; sourceTree = "<group>"; };
 		4E8127111B899E84009D40A8 /* PrivacyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyController.h; sourceTree = "<group>"; };
 		4E8127121B899E84009D40A8 /* PrivacyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyController.m; sourceTree = "<group>"; };
 		4E8127141B899E98009D40A8 /* AboutUsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsController.h; sourceTree = "<group>"; };
@@ -756,6 +759,8 @@
 				4E8127151B899E98009D40A8 /* AboutUsController.m */,
 				4E81271B1B89D23D009D40A8 /* HelpController.h */,
 				4E81271C1B89D23D009D40A8 /* HelpController.m */,
+				4E7215001B8AFB31006CE807 /* ShowPictureController.h */,
+				4E7215011B8AFB31006CE807 /* ShowPictureController.m */,
 			);
 			name = "我的";
 			sourceTree = "<group>";
@@ -1191,6 +1196,7 @@
 				4E57EA5D1B87453900397B72 /* CustomCell.m in Sources */,
 				4E57E9591B86CC3200397B72 /* UIScrollView+MJRefresh.m in Sources */,
 				4E51F7571B885733000AD456 /* SDWebImageDownloaderOperation.m in Sources */,
+				4E7215021B8AFB31006CE807 /* ShowPictureController.m in Sources */,
 				4E51F7611B885733000AD456 /* UIView+WebCacheOperation.m in Sources */,
 				4E57E9731B86CCE200397B72 /* UIRefreshControl+AFNetworking.m in Sources */,
 				4E51F7561B885733000AD456 /* SDWebImageDownloader.m in Sources */,

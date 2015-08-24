@@ -13,7 +13,6 @@
     NSString * _url;             //视频音频的 URL
     NSString * _dingCaiUrlId;      //顶踩的 URL 的 id
     AFHTTPRequestOperationManager * manager;
-    NSString * num;
 }
 
 
@@ -90,23 +89,25 @@
     self.myTextLabel = [[UILabel alloc]initWithFrame:CGRectZero];
     [self.contentView addSubview:self.myTextLabel];
     
-    
+    //配图
     self.pictureImageview = [[UIImageView alloc]initWithFrame:CGRectZero];
     [self.contentView addSubview:self.pictureImageview];
+    
+    
     //音频播放键
     self.voiceButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.voiceButton.frame = CGRectZero;
     [self.contentView addSubview:self.voiceButton];
     [self.voiceButton setImage:[UIImage imageNamed:@"playButtonPlay"] forState:UIControlStateNormal];
     self.voiceButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"playButtonClick"]];
-    [self.voiceButton addTarget:self action:@selector(voiceButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.voiceButton addTarget:self action:@selector(voiceAndVideoButtonClick) forControlEvents:UIControlEventTouchUpInside];
     //视频播放键
     self.videoButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.videoButton.frame = CGRectZero;
     [self.contentView addSubview:self.videoButton];
     [self.videoButton setImage:[UIImage imageNamed:@"playButtonPlay"] forState:UIControlStateNormal];
     self.videoButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"playButtonClick"]];
-    [self.videoButton addTarget:self action:@selector(videoButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.videoButton addTarget:self action:@selector(voiceAndVideoButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
     
     self.footView = [[UIView alloc]initWithFrame:CGRectZero];
@@ -117,14 +118,16 @@
     [self.dingButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal] ;
     [self.footView addSubview:self.dingButton];
     [self.dingButton setImage:[UIImage imageNamed:@"mainCellDing"] forState:UIControlStateNormal];
-    [self.dingButton addTarget:self action:@selector(dingButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.dingButton addTarget:self action:@selector(dingAndCaiButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.dingButton.tag = 1;
     
     self.caiButton = [[UIButton alloc]initWithFrame:CGRectMake(10 + (WIDTH-20)*0.25, 5, (WIDTH-20)*0.25, 15)];
     [self.footView addSubview:self.caiButton];
     [self.caiButton setImage:[UIImage imageNamed:@"mainCellCai"] forState:UIControlStateNormal];
     self.caiButton.titleLabel.font = [UIFont systemFontOfSize:BTNFONTSIZE];
     [self.caiButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal] ;
-    
+    [self.caiButton addTarget:self action:@selector(dingAndCaiButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.caiButton.tag = 0;
     
     self.shareButton = [[UIButton alloc]initWithFrame:CGRectMake(10 +2*(WIDTH-20)*0.25 , 5, (WIDTH-20)*0.25, 15)];
     [self.footView addSubview:self.shareButton];
@@ -142,7 +145,6 @@
     [self.commentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal] ;
     
 }
-
 
 -(void)configWithModel:(NewModel *)model{
     
@@ -194,38 +196,66 @@
 }
 
 //顶按钮点击
--(void)dingButtonClick:(UIButton *)button{
+-(void)dingAndCaiButtonClick:(UIButton *)button{
     
+    if (button.tag == 1)
+    {
+        NSString * dingURL = [NSString stringWithFormat:DING,_dingCaiUrlId];
+        SKLog(@"--------%@",_dingCaiUrlId);
+        SKLog(@"~~~~%@",DING);
+        [self DingData:dingURL withFlag:button.tag];
+    }
+    else if(button.tag == 0)
+    {
+        NSString * caiURL = [NSString stringWithFormat:CAI,_dingCaiUrlId];
+        SKLog(@"--------%@",_dingCaiUrlId);
+        SKLog(@"~~~~%@",CAI);
+        [self DingData:caiURL withFlag:button.tag];
+    }
     
-    NSString * dingURL = [NSString stringWithFormat:DING,_dingCaiUrlId];
-    SKLog(@"%@",dingURL);
-    
-    [self DingData:dingURL];
 }
 
--(void)DingData:(NSString *)url{
-    
+-(void)DingData:(NSString *)url withFlag:(NSInteger)flag{
+    //取消解析格式  只返回 NSData 类型
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    SKLog(@"~~~~%@",url);
     [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        num = responseObject;
-        [self.dingButton setTitle:num forState:UIControlStateNormal];
-        [MBProgressHUD showSuccess:@"点赞成功"];
+        NSData * data = responseObject;
+        NSString * countNum = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        SKLog(@"==========%@",countNum);
+        if (flag ==1) {
+            [self.dingButton setImage:[UIImage imageNamed:@"mainCellDingClick"] forState:UIControlStateNormal];
+            [self.dingButton setTitle:countNum forState:UIControlStateNormal];
+            [MBProgressHUD showSuccess:@"点赞成功"];
+        }else if(flag ==0)
+        {
+            NSInteger tempNum = ([countNum integerValue] +2)/2;
+            NSString * str = [NSString stringWithFormat:@"%ld",(long)tempNum];
+            [self.caiButton setImage:[UIImage imageNamed:@"mainCellCaiClick"] forState:UIControlStateNormal];
+            [self.caiButton setTitle:str  forState:UIControlStateNormal];
+            [MBProgressHUD showSuccess:@"点踩成功"];
+            
+        }
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [MBProgressHUD showError:@"点赞失败"];
+        if (flag==1) {
+            [MBProgressHUD showError:@"点赞失败"];
+            
+        }else if(flag ==0){
+            
+            [MBProgressHUD showError:@"点踩失败"];
+            
+        }
     }];
     
     
 }
-//点击声音播放按钮
--(void)voiceButtonClick{
+//点击视频,声音播放按钮
+-(void)voiceAndVideoButtonClick{
     SKLog(@"songjinwei");
     
     self.myBlock(_url);
     
 }
-//点击视频播放按钮
--(void)videoButtonClick{
-    
-    self.myBlock(_url);
-    
-}
+
 @end

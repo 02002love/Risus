@@ -94,6 +94,11 @@
 
 
 //顶按钮的接口
-#define DING @"http://api.budejie.com/api/api_open.php?a=love&appname=baisishequ&asid=5684E21E-F2C0-49D5-85CC-EA62CEA46A0B&c=post&client=iphone&device=iPhone%204&id=%d&jbk=0&mac=&market=&openudid=c312254df2a5167ddcfcd5280e1559fe2906c040&tj_from=voice&udid=&ver=3.6.1"
+#define DING @"http://api.budejie.com/api/api_open.php?a=love&appname=baisishequ&asid=5684E21E-F2C0-49D5-85CC-EA62CEA46A0B&c=post&client=iphone&id=%@&jbk=0&mac=&market=&openudid=c312254df2a5167ddcfcd5280e1559fe2906c040&tj_from=voice&udid=&ver=3.6.1"
+
+//踩按钮的接口
+#define CAI @"http://api.budejie.com/api/api_open.php?a=cai&appname=baisishequ&asid=5684E21E-F2C0-49D5-85CC-EA62CEA46A0B&c=post&client=iphone&id=%@&jbk=0&mac=&market=&openudid=c312254df2a5167ddcfcd5280e1559fe2906c040&tj_from=video&udid=&ver=3.6.1"
+
+//#define DING @"http://api.budejie.com/api/api_open.php?a=love&appname=baisishequ&asid=5684E21E-F2C0-49D5-85CC-EA62CEA46A0B&c=post&id=%d&openudid=c312254df2a5167ddcfcd5280e1559fe2906c040&tj_from=voice&ver=3.6.1"
 
 #endif
