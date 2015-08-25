@@ -10,6 +10,8 @@
 #import "AboutUsController.h"
 #import "HelpController.h"
 #import "PrivacyController.h"
+#import "FMDBManager.h"
+#import "CollectionController.h"
 
 @interface MineController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -31,7 +33,7 @@
     
     if (!_dataArray) {
         NSString * version =  [NSString stringWithFormat:@"当前版本:%@",VERSION];
-        _dataArray = @[version ,@"我的收藏",@"清除缓存", @"设备信息",@"隐私政策",@"打分点赞",@"推荐朋友",@"帮助支持",@"关于我们"];
+        _dataArray = @[version ,@"我的收藏",@"清除缓存",@"隐私政策",@"推荐朋友",@"帮助支持",@"关于我们"];
         
     }
     return _dataArray;
@@ -76,17 +78,14 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     switch (indexPath.row) {
-        case 0:{//请求新版本
-//            [MBProgressHUD showMessage:@"正在检查新版本..."];
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [MBProgressHUD hideHUD];
-//                [MBProgressHUD showError:@"没有新版本,过几天再来吧..."];
-//                
-//            });
+        case 0:{
             
         }
             break;
         case 1:{//我的收藏
+            CollectionController * collectionVC = [[CollectionController alloc]init];
+            collectionVC.dataArray =  [[FMDBManager sharedFMDBManager] selectData];;
+            [self.navigationController pushViewController:collectionVC animated:YES];
             
             
         }
@@ -95,6 +94,7 @@
             [MBProgressHUD showMessage:@"正在努力为您清除垃圾..."];
             //SDWebImage 的单例,清除缓存
             [[SDImageCache sharedImageCache] cleanDisk];
+            [[NSURLCache sharedURLCache] removeAllCachedResponses];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUD];
                 [MBProgressHUD showSuccess:@"已为您成功扫除垃圾!"];
@@ -103,36 +103,28 @@
             
         }
             break;
-        case 3:{//设备信息
             
-            
-        }
-            break;
-        case 4:{//隐私政策
+        case 3:{//隐私政策
             
             PrivacyController * privacyVC = [[PrivacyController alloc]init];
             [self.navigationController pushViewController:privacyVC animated:YES];
             
         }
             break;
-        case 5:{//打分支持
+            
+        case 4:{//推荐朋友
             
             
         }
             break;
-        case 6:{//推荐朋友
-            
-            
-        }
-            break;
-        case 7:{//帮助
+        case 5:{//帮助
             
             HelpController * helpVC = [[HelpController alloc]init];
             [self.navigationController pushViewController:helpVC animated:YES];
             
         }
             break;
-        case 8:{//关于我们
+        case 6:{//关于我们
             
             AboutUsController * aboutVC = [[AboutUsController alloc]init];
             [self.navigationController pushViewController:aboutVC animated:YES];

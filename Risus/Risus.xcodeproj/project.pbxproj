@@ -33,6 +33,9 @@
 		4E51F7751B889452000AD456 /* playButtonPause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51F76F1B889452000AD456 /* playButtonPause@2x.png */; };
 		4E51F7761B889452000AD456 /* playButtonPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51F7701B889452000AD456 /* playButtonPlay.png */; };
 		4E51F7771B889452000AD456 /* playButtonPlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51F7711B889452000AD456 /* playButtonPlay@2x.png */; };
+		4E52B3991B8C490B0047211C /* libUMessage_Sdk_1.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E52B3971B8C490B0047211C /* libUMessage_Sdk_1.1.0.a */; };
+		4E52B3C41B8C652D0047211C /* FMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E52B3C31B8C652D0047211C /* FMDBManager.m */; };
+		4E52B3C71B8C8B420047211C /* CollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E52B3C61B8C8B420047211C /* CollectionController.m */; };
 		4E57E8E71B86C43700397B72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E57E8E61B86C43700397B72 /* main.m */; };
 		4E57E8EA1B86C43700397B72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E57E8E91B86C43700397B72 /* AppDelegate.m */; };
 		4E57E8F21B86C43700397B72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E57E8F11B86C43700397B72 /* Images.xcassets */; };
@@ -180,13 +183,11 @@
 		4E7215111B8B32F7006CE807 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E72150B1B8B32F7006CE807 /* FMDatabaseQueue.m */; };
 		4E7215121B8B32F7006CE807 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E72150D1B8B32F7006CE807 /* FMResultSet.m */; };
 		4E7215141B8B3BB2006CE807 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7215131B8B3BB2006CE807 /* libsqlite3.dylib */; };
-		4E7215161B8B5484006CE807 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E7215151B8B5484006CE807 /* PushConfig.plist */; };
 		4E7215181B8B552F006CE807 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7215171B8B552F006CE807 /* CFNetwork.framework */; };
 		4E72151A1B8B5543006CE807 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7215191B8B5543006CE807 /* CoreTelephony.framework */; };
 		4E72151C1B8B5577006CE807 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E72151B1B8B5577006CE807 /* SystemConfiguration.framework */; };
 		4E72151E1B8B5588006CE807 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E72151D1B8B5588006CE807 /* libz.dylib */; };
 		4E7215201B8B5598006CE807 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E72151F1B8B5598006CE807 /* Security.framework */; };
-		4E7215241B8B5FCA006CE807 /* libPushSDK-1.8.5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7215231B8B5FCA006CE807 /* libPushSDK-1.8.5.a */; };
 		4E8127131B899E84009D40A8 /* PrivacyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8127121B899E84009D40A8 /* PrivacyController.m */; };
 		4E8127161B899E98009D40A8 /* AboutUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8127151B899E98009D40A8 /* AboutUsController.m */; };
 		4E8127181B89C37E009D40A8 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4E8127171B89C37E009D40A8 /* about.html */; };
@@ -252,6 +253,12 @@
 		4E51F76F1B889452000AD456 /* playButtonPause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playButtonPause@2x.png"; path = "../playButtonPause@2x.png"; sourceTree = "<group>"; };
 		4E51F7701B889452000AD456 /* playButtonPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playButtonPlay.png; path = ../playButtonPlay.png; sourceTree = "<group>"; };
 		4E51F7711B889452000AD456 /* playButtonPlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playButtonPlay@2x.png"; path = "../playButtonPlay@2x.png"; sourceTree = "<group>"; };
+		4E52B3971B8C490B0047211C /* libUMessage_Sdk_1.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.1.0.a; sourceTree = "<group>"; };
+		4E52B3981B8C490B0047211C /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
+		4E52B3C21B8C652D0047211C /* FMDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBManager.h; sourceTree = "<group>"; };
+		4E52B3C31B8C652D0047211C /* FMDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBManager.m; sourceTree = "<group>"; };
+		4E52B3C51B8C8B420047211C /* CollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionController.h; sourceTree = "<group>"; };
+		4E52B3C61B8C8B420047211C /* CollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionController.m; sourceTree = "<group>"; };
 		4E57E8E11B86C43700397B72 /* Risus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Risus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E57E8E51B86C43700397B72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E57E8E61B86C43700397B72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -454,14 +461,11 @@
 		4E72150C1B8B32F7006CE807 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		4E72150D1B8B32F7006CE807 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		4E7215131B8B3BB2006CE807 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		4E7215151B8B5484006CE807 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		4E7215171B8B552F006CE807 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4E7215191B8B5543006CE807 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		4E72151B1B8B5577006CE807 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4E72151D1B8B5588006CE807 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4E72151F1B8B5598006CE807 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		4E7215221B8B5FCA006CE807 /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
-		4E7215231B8B5FCA006CE807 /* libPushSDK-1.8.5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPushSDK-1.8.5.a"; sourceTree = "<group>"; };
 		4E8127111B899E84009D40A8 /* PrivacyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyController.h; sourceTree = "<group>"; };
 		4E8127121B899E84009D40A8 /* PrivacyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyController.m; sourceTree = "<group>"; };
 		4E8127141B899E98009D40A8 /* AboutUsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsController.h; sourceTree = "<group>"; };
@@ -482,9 +486,9 @@
 			files = (
 				4E7215201B8B5598006CE807 /* Security.framework in Frameworks */,
 				4E72151E1B8B5588006CE807 /* libz.dylib in Frameworks */,
-				4E7215241B8B5FCA006CE807 /* libPushSDK-1.8.5.a in Frameworks */,
 				4E72151C1B8B5577006CE807 /* SystemConfiguration.framework in Frameworks */,
 				4E72151A1B8B5543006CE807 /* CoreTelephony.framework in Frameworks */,
+				4E52B3991B8C490B0047211C /* libUMessage_Sdk_1.1.0.a in Frameworks */,
 				4E7215181B8B552F006CE807 /* CFNetwork.framework in Frameworks */,
 				4E7215141B8B3BB2006CE807 /* libsqlite3.dylib in Frameworks */,
 			);
@@ -562,6 +566,15 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		4E52B3961B8C490B0047211C /* UMessage_Sdk_1.1.0 */ = {
+			isa = PBXGroup;
+			children = (
+				4E52B3971B8C490B0047211C /* libUMessage_Sdk_1.1.0.a */,
+				4E52B3981B8C490B0047211C /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.1.0;
+			sourceTree = "<group>";
+		};
 		4E57E8D81B86C43700397B72 = {
 			isa = PBXGroup;
 			children = (
@@ -612,7 +625,6 @@
 				4E57E98D1B86D83200397B72 /* tabbar */,
 				4E57E8E51B86C43700397B72 /* Info.plist */,
 				4E57E8E61B86C43700397B72 /* main.m */,
-				4E7215151B8B5484006CE807 /* PushConfig.plist */,
 				4E57E90E1B86CBC300397B72 /* Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -667,6 +679,8 @@
 			children = (
 				4E57E8E81B86C43700397B72 /* AppDelegate.h */,
 				4E57E8E91B86C43700397B72 /* AppDelegate.m */,
+				4E52B3C21B8C652D0047211C /* FMDBManager.h */,
+				4E52B3C31B8C652D0047211C /* FMDBManager.m */,
 				4E57E9751B86CD5800397B72 /* MainTabbarController.h */,
 				4E57E9761B86CD5800397B72 /* MainTabbarController.m */,
 				4E57EA511B86FB7900397B72 /* RootController.h */,
@@ -678,7 +692,7 @@
 		4E57E90F1B86CBF200397B72 /* 第三方 */ = {
 			isa = PBXGroup;
 			children = (
-				4E7215211B8B5FCA006CE807 /* lib */,
+				4E52B3961B8C490B0047211C /* UMessage_Sdk_1.1.0 */,
 				4E7215031B8B32F7006CE807 /* FMDB */,
 				4E51F72D1B885733000AD456 /* SDWebImage */,
 				4E57E95B1B86CCE200397B72 /* UIKit+AFNetworking */,
@@ -804,6 +818,8 @@
 				4E81271C1B89D23D009D40A8 /* HelpController.m */,
 				4E7215001B8AFB31006CE807 /* ShowPictureController.h */,
 				4E7215011B8AFB31006CE807 /* ShowPictureController.m */,
+				4E52B3C51B8C8B420047211C /* CollectionController.h */,
+				4E52B3C61B8C8B420047211C /* CollectionController.m */,
 			);
 			name = "我的";
 			sourceTree = "<group>";
@@ -986,15 +1002,6 @@
 			path = FMDB;
 			sourceTree = "<group>";
 		};
-		4E7215211B8B5FCA006CE807 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				4E7215221B8B5FCA006CE807 /* APService.h */,
-				4E7215231B8B5FCA006CE807 /* libPushSDK-1.8.5.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1059,6 +1066,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 4E57E8D81B86C43700397B72;
 			productRefGroup = 4E57E8E21B86C43700397B72 /* Products */;
@@ -1092,7 +1100,6 @@
 				4E8127231B89F8EA009D40A8 /* logo1.png in Resources */,
 				4E57EA461B86D88000397B72 /* navigationButtonRefresh@2x.png in Resources */,
 				4E57EA0C1B86D86B00397B72 /* Profile_womanIcon@2x.png in Resources */,
-				4E7215161B8B5484006CE807 /* PushConfig.plist in Resources */,
 				4E57E9FC1B86D86B00397B72 /* mainCellDing@2x.png in Resources */,
 				4E57E9EF1B86D86B00397B72 /* mainCell.png in Resources */,
 				4E51F7661B889105000AD456 /* mine-setting-iconN.png in Resources */,
@@ -1206,10 +1213,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E8127131B899E84009D40A8 /* PrivacyController.m in Sources */,
+				4E52B3C71B8C8B420047211C /* CollectionController.m in Sources */,
 				4E57E9331B86CC2B00397B72 /* MBProgressHUD+MJ.m in Sources */,
 				4E57E9521B86CC3200397B72 /* MJRefreshFooter.m in Sources */,
 				4E57E9701B86CCE200397B72 /* UIButton+AFNetworking.m in Sources */,
 				4E57E92A1B86CC1900397B72 /* AFURLRequestSerialization.m in Sources */,
+				4E52B3C41B8C652D0047211C /* FMDBManager.m in Sources */,
 				4E57E9741B86CCE200397B72 /* UIWebView+AFNetworking.m in Sources */,
 				4E57E9721B86CCE200397B72 /* UIProgressView+AFNetworking.m in Sources */,
 				4E57E9291B86CC1900397B72 /* AFURLConnectionOperation.m in Sources */,
@@ -1389,10 +1398,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Risus/lib",
-					"$(PROJECT_DIR)/Risus/lib",
+					"$(PROJECT_DIR)/Risus/UMessage_Sdk_1.1.0",
+					"$(PROJECT_DIR)/Risus/UMSocial_Sdk_4.2.3",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Risus/lib";
 			};
 			name = Debug;
 		};
@@ -1408,10 +1419,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Risus/lib",
-					"$(PROJECT_DIR)/Risus/lib",
+					"$(PROJECT_DIR)/Risus/UMessage_Sdk_1.1.0",
+					"$(PROJECT_DIR)/Risus/UMSocial_Sdk_4.2.3",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Risus/lib";
 			};
 			name = Release;
 		};

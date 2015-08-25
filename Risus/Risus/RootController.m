@@ -207,6 +207,11 @@
     SKLog(@"%ld",(long)indexPath.row);
     NewModel * model = self.dataArray [indexPath.row];
     
+    if (model.image0 ==nil) {
+        if ([@"" isEqualToString:model.voiceuri] ||[@"" isEqualToString: model.videouri]) {
+            return;
+        }
+    }
     ShowPictureController * showPictureVC = [[ShowPictureController alloc]init];
     showPictureVC.hidesBottomBarWhenPushed = YES;
     showPictureVC.pictureName = model.image0;
@@ -215,6 +220,5 @@
     [self presentViewController:showPictureVC animated:YES completion:nil];
     
     
-
 }
 @end

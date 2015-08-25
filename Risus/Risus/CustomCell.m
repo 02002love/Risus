@@ -9,11 +9,15 @@
 #define BTNFONTSIZE 10
 #import "CustomCell.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "FMDBManager.h"
+
 @interface CustomCell ()<UIActionSheetDelegate>
 {
     NSString * _url;             //视频音频的 URL
     NSString * itemId;      //顶踩的 URL 的 id
     AFHTTPRequestOperationManager * manager;
+    NewModel * tempModel;
+    BOOL isCollected;
 }
 
 
@@ -152,6 +156,7 @@
 
 -(void)configWithModel:(NewModel *)model{
     
+    tempModel = model;
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:model.profile_image]];
     self.nameLabel.text = model.name;
     self.nameLabel.textColor = [UIColor grayColor];
@@ -180,13 +185,13 @@
     //播放声音
     if (![@"" isEqualToString:model.voiceuri]) {
         SKLog(@"------    %@    ======",model.voiceuri);
-        self.voiceButton.frame = (CGRect){(WIDTH -10-63)*0.5,HEADHEIGHT + textHeight + pictureHeight*0.8 +SPACE,63,63};
+        self.voiceButton.frame = (CGRect){(WIDTH -10-63)*0.5,HEADHEIGHT + textHeight + pictureHeight*0.5 +SPACE,63,63};
         _url = model.voiceuri;
     }
     //播放视频
     if (![@"" isEqualToString:model.videouri]) {
         SKLog(@"------   %@    ------",model.videouri);
-        self.videoButton.frame = (CGRect){(WIDTH -10-63)*0.5,HEADHEIGHT + textHeight + pictureHeight*0.8 +SPACE,63,63};
+        self.videoButton.frame = (CGRect){(WIDTH -10-63)*0.5,HEADHEIGHT + textHeight + pictureHeight*0.5 +SPACE,63,63};
         _url = model.videouri;
     }
     //cell的脚
@@ -263,13 +268,22 @@
     
 }
 
-//举报按钮
+//收藏,举报按钮
 -(void)exposerBtnCilck:(UIButton *)btn{
     
+    if (!isCollected) {
+        UIActionSheet * sheet = [[UIActionSheet alloc]initWithTitle:nil delegate: self cancelButtonTitle:@"取消" destructiveButtonTitle: nil otherButtonTitles:@"收藏",@"举报", nil];
+        sheet.delegate = self;
+        [sheet showInView:self];
+        isCollected = YES;
+    }else{
     
-    UIActionSheet * sheet = [[UIActionSheet alloc]initWithTitle:@"选择您的操作" delegate: self cancelButtonTitle:@"取消" destructiveButtonTitle: nil otherButtonTitles:@"收藏",@"举报", nil];
-    sheet.delegate = self;
-    [sheet showInView:self];
+        UIActionSheet * sheet = [[UIActionSheet alloc]initWithTitle:nil delegate: self cancelButtonTitle:@"取消" destructiveButtonTitle: nil otherButtonTitles:@"取消收藏",@"举报", nil];
+        sheet.delegate = self;
+        [sheet showInView:self];
+    
+    }
+    
     
 }
 
@@ -278,6 +292,7 @@
     
     if (buttonIndex == 0){//收藏
         
+        [[FMDBManager sharedFMDBManager] addData:tempModel];
         [MBProgressHUD showSuccess:@"收藏成功"];
         
         
