@@ -77,20 +77,35 @@
     UIActionSheet * sheet = [[UIActionSheet alloc]initWithTitle:@"是否保存图片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle: nil otherButtonTitles:@"确定", nil];
     sheet.delegate = self;
     [sheet showInView:self.view];
-  
+    
 }
 
 #pragma mark  ==actionsheet的代理方法==
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-
+    
     if (buttonIndex ==0) {
-        UIImageWriteToSavedPhotosAlbum(saveImage.image, nil, nil, nil);
+        UIImageWriteToSavedPhotosAlbum(saveImage.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        
     }
-
-
+    
+    
 }
 
+-(void)image:(UIImage *)image didFinishSavingWithError:(NSError * )error contextInfo:(void*)contextInfo{
+    
+    if (error != nil) {
+        
+        [MBProgressHUD showError:@"保存失败"];
+    }
+    else
+    {
+        [MBProgressHUD showSuccess:@"保存成功"];
+        
+    }
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

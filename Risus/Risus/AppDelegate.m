@@ -17,6 +17,24 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //极光推送
+    if ([UIDevice currentDevice].systemVersion.floatValue>=8.0) {
+        [APService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound |
+                                                       UIUserNotificationTypeAlert) categories:nil];
+        
+        
+    }else{
+        
+        [APService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound |
+                                                       UIUserNotificationTypeAlert) categories:nil];
+    }
+
+    [APService setupWithOption:launchOptions];
+    
+    
+    
+    
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     MainTabbarController * rootVC = [[MainTabbarController alloc]init];
     self.window.rootViewController = rootVC;
@@ -24,6 +42,29 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+
+    [APService registerDeviceToken:deviceToken];
+
+}
+
+
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+//    
+//    // Required
+//    [APService handleRemoteNotification:userInfo];
+//}
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+
+    SKLog(@"接收成功~~");
+    if ([UIDevice currentDevice].systemVersion.floatValue<8.0) {
+        completionHandler(UIBackgroundFetchResultNewData);
+        
+    }
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -38,6 +79,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [application setApplicationIconBadgeNumber:0];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

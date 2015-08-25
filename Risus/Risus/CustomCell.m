@@ -9,9 +9,10 @@
 #define BTNFONTSIZE 10
 #import "CustomCell.h"
 #import <MediaPlayer/MediaPlayer.h>
-@interface CustomCell (){
+@interface CustomCell ()<UIActionSheetDelegate>
+{
     NSString * _url;             //视频音频的 URL
-    NSString * _dingCaiUrlId;      //顶踩的 URL 的 id
+    NSString * itemId;      //顶踩的 URL 的 id
     AFHTTPRequestOperationManager * manager;
 }
 
@@ -20,7 +21,7 @@
 @property (nonatomic)   UIImageView *iconImageView;//头像
 @property (nonatomic)   UILabel *nameLabel;//昵称
 @property (nonatomic)   UILabel *dateLabel;//时间
-@property (nonatomic)   UIButton *jubaoButton;//举报
+@property (nonatomic)   UIButton *exposerButton;//举报
 
 
 
@@ -82,8 +83,9 @@
     [self.headView addSubview:self.nameLabel];
     self.dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(50, 18, 100, 10)];
     [self.headView addSubview:self.dateLabel];
-    self.jubaoButton = [[UIButton alloc]initWithFrame:CGRectMake(WIDTH - 40, 10, 20, 20)];
-    [self.headView addSubview:self.jubaoButton];
+    self.exposerButton = [[UIButton alloc]initWithFrame:CGRectMake(WIDTH - 40, 10, 20, 20)];
+    [self.exposerButton addTarget:self action:@selector(exposerBtnCilck:) forControlEvents:UIControlEventTouchUpInside];
+    [self.headView addSubview:self.exposerButton];
     
     
     self.myTextLabel = [[UILabel alloc]initWithFrame:CGRectZero];
@@ -146,6 +148,8 @@
     
 }
 
+
+
 -(void)configWithModel:(NewModel *)model{
     
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:model.profile_image]];
@@ -155,7 +159,7 @@
     self.dateLabel.text = model.create_time;
     self.dateLabel.textColor = [UIColor grayColor];
     self.dateLabel.font = [UIFont systemFontOfSize:10];
-    [self.jubaoButton setImage:[UIImage imageNamed:@"Profile_reportIcon"] forState:UIControlStateNormal];
+    [self.exposerButton setImage:[UIImage imageNamed:@"Profile_reportIcon"] forState:UIControlStateNormal];
     
     self.myTextLabel.text = model.text;
     self.myTextLabel.numberOfLines = 0;
@@ -187,7 +191,7 @@
     }
     //cell的脚
     self.footView.frame = CGRectMake(5, HEADHEIGHT + textHeight + pictureHeight +SPACE, WIDTH-20, FOOTHEIGHT);
-    _dingCaiUrlId = model._id;
+    itemId = model._id;
     [self.dingButton setTitle:model.love forState:UIControlStateNormal];
     [self.caiButton setTitle:model.hate forState:UIControlStateNormal];
     [self.shareButton setTitle:model.repost forState:UIControlStateNormal];
@@ -195,27 +199,27 @@
     
 }
 
-//顶按钮点击
+//顶,踩 按钮点击
 -(void)dingAndCaiButtonClick:(UIButton *)button{
     
     if (button.tag == 1)
     {
-        NSString * dingURL = [NSString stringWithFormat:DING,_dingCaiUrlId];
-        SKLog(@"--------%@",_dingCaiUrlId);
+        NSString * dingURL = [NSString stringWithFormat:DING,itemId];
+        SKLog(@"--------%@",itemId);
         SKLog(@"~~~~%@",DING);
-        [self DingData:dingURL withFlag:button.tag];
+        [self dingAndCaiData:dingURL withFlag:button.tag];
     }
     else if(button.tag == 0)
     {
-        NSString * caiURL = [NSString stringWithFormat:CAI,_dingCaiUrlId];
-        SKLog(@"--------%@",_dingCaiUrlId);
+        NSString * caiURL = [NSString stringWithFormat:CAI,itemId];
+        SKLog(@"--------%@",itemId);
         SKLog(@"~~~~%@",CAI);
-        [self DingData:caiURL withFlag:button.tag];
+        [self dingAndCaiData:caiURL withFlag:button.tag];
     }
     
 }
-
--(void)DingData:(NSString *)url withFlag:(NSInteger)flag{
+//顶踩初始化数据
+-(void)dingAndCaiData:(NSString *)url withFlag:(NSInteger)flag{
     //取消解析格式  只返回 NSData 类型
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     SKLog(@"~~~~%@",url);
@@ -250,12 +254,47 @@
     
     
 }
+
 //点击视频,声音播放按钮
 -(void)voiceAndVideoButtonClick{
-    SKLog(@"songjinwei");
     
+    SKLog(@"songjinwei");
     self.myBlock(_url);
     
 }
 
+//举报按钮
+-(void)exposerBtnCilck:(UIButton *)btn{
+    
+    
+    UIActionSheet * sheet = [[UIActionSheet alloc]initWithTitle:@"选择您的操作" delegate: self cancelButtonTitle:@"取消" destructiveButtonTitle: nil otherButtonTitles:@"收藏",@"举报", nil];
+    sheet.delegate = self;
+    [sheet showInView:self];
+    
+}
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex == 0){//收藏
+        
+        [MBProgressHUD showSuccess:@"收藏成功"];
+        
+        
+    }
+    else if(buttonIndex ==1){//举报
+        
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        [manager POST:[NSString stringWithFormat:JUBAO,itemId] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [MBProgressHUD showSuccess:@"举报成功"];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [MBProgressHUD showSuccess:@"举报失败"];
+            SKLog(@"456");
+        }];
+        
+        
+    }
+    
+    
+}
 @end
