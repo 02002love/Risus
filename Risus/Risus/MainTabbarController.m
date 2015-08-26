@@ -60,6 +60,8 @@
     nav4.navigationBar.translucent = NO;
     video.title = @"视频";
     
+    
+#warning 待完成
 //    //发布
 //    PushController * mine = [[PushController alloc]init];
 //    UINavigationController * nav5= [[UINavigationController alloc]initWithRootViewController:mine];
@@ -70,7 +72,7 @@
 }
 
 -(void)createTabbar{
-    
+#warning 待完成
 //    NSArray * name = @[@"图片",@"段子",@"来一发",@"声音",@"视频"];
 //    NSArray *unSelectImageName = @[@"tabbarQuotation.png",@"tabbarEssay.png",@"navigationButtonPublish",@"tabbarVoice.png",@"tabbarVideo.png"];
 //    NSArray *selectImageName = @[@"tabbarQuotationClick.png",@"tabbarEssayClick.png",@"navigationButtonPublish",@"tabbarVoiceClick.png",@"tabbarVideoClick.png"];

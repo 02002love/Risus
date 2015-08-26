@@ -77,8 +77,13 @@
 //图片,段子,声音接口
 //精华
 #define BETTER @"http://api.budejie.com/api/api_open.php?c=%@&a=list&from=ios&per=20&page=%d&type=%d&client=iphone&market=&ver=2.4&device=iPhone%204&uid=&sex=&udid=&mac=6C:3E:6D:3E:00:1B&openudid=7b054509c94dd8d95dca2765e72f6810f016b599&asid=37BCB6BC-D5A4-4DDA-98B6-2978B06354F7&jbk=0&appname=baisibudejie"
-//最新
-#define NEW @"http://api.budejie.com/api/api_open.php?c=%@&a=newlist&from=ios&per=20&page=%d&type=%d&client=iphone&market=&ver=2.4&device=iPhone%204&uid=&sex=&udid=&mac=6C:3E:6D:3E:00:1B&openudid=7b054509c94dd8d95dca2765e72f6810f016b599&asid=37BCB6BC-D5A4-4DDA-98B6-2978B06354F7&jbk=0&appname=baisibudejie"
+//最新条目
+
+
+
+//最新的 URL  http://api.budejie.com/api/api_open.php?a=newlist&appname=baisishequ&asid=5684E21E-F2C0-49D5-85CC-EA62CEA46A0B&c=data&client=iphone&device=iPhone%204&from=ios&jbk=0&mac=&market=&maxtime=1440578386&openudid=c312254df2a5167ddcfcd5280e1559fe2906c040&page=2&per=20&sub_flag=1&type=10&udid=&ver=3.6.1
+#define NEW @"http://api.budejie.com/api/api_open.php?a=newlist&appname=baisishequ&asid=5684E21E-F2C0-49D5-85CC-EA62CEA46A0B&c=%@&client=iphone&from=ios&jbk=0&openudid=c312254df2a5167ddcfcd5280e1559fe2906c040&page=%d&per=20&sub_flag=1&type=%d&udid=&ver=3.6.1"
+//#define NEW @"http://api.budejie.com/api/api_open.php?c=%@&a=newlist&from=ios&per=20&page=%d&type=%d&client=iphone&market=&ver=2.4&device=iPhone%204&uid=&sex=&udid=&mac=6C:3E:6D:3E:00:1B&openudid=7b054509c94dd8d95dca2765e72f6810f016b599&asid=37BCB6BC-D5A4-4DDA-98B6-2978B06354F7&jbk=0&appname=baisibudejie"
 //穿越
 #define CROSS @"http://api.budejie.com/api/api_open.php?c=%@&a=list&from=ios&per=20&page=%d&type=%d&order=timewarp&client=iphone&market=&ver=2.4&device=iPhone%204&uid=&sex=&udid=&mac=6C:3E:6D:3E:00:1B&openudid=7b054509c94dd8d95dca2765e72f6810f016b599&asid=37BCB6BC-D5A4-4DDA-98B6-2978B06354F7&jbk=0&appname=baisibudejie"
 

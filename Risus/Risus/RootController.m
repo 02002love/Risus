@@ -16,7 +16,7 @@
 @interface RootController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)NSMutableArray * dataArray;
 @property (nonatomic,strong)AFHTTPRequestOperationManager  * manager;
-@property (nonatomic,assign) BOOL  isUpdate;
+//@property (nonatomic,assign) BOOL  isUpdate;
 @end
 
 @implementation RootController
@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    page = 1;
     [self loadData];
     [self createNavi];
     [self createTableView];
@@ -35,34 +36,21 @@
     backItem.title = @"返回";
     self.navigationItem.backBarButtonItem = backItem;
     
-    [self.myTableView addLegendHeaderWithRefreshingBlock:^{
-        if (!self.isUpdate) {
-            self.page = 0;
-            self.isUpdate =!self.isUpdate;
-            //下拉刷新   清空以前的元素
-            [self.dataArray removeAllObjects];
-            [self loadData];
-            
-        }
-    }];
-    [self.myTableView addLegendFooterWithRefreshingBlock:^{
-        if (!self.isUpdate) {
-            self.page ++;
-            self.isUpdate =!self.isUpdate;
-            [self loadData];
-        }
-    }];
     
     
 }
 
 -(void)createNavi{
     
+    
+    
+#warning 待完成
+    
     //用户
-    UIButton * leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftBtn.frame = CGRectMake(0, 0, 27, 27);
-    [leftBtn setImage:[UIImage imageNamed:@"tabbarSetup"] forState:UIControlStateNormal];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+    //    UIButton * leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    //    leftBtn.frame = CGRectMake(0, 0, 27, 27);
+    //    [leftBtn setImage:[UIImage imageNamed:@"tabbarSetup"] forState:UIControlStateNormal];
+    //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
     //设置
     UIButton * rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame = CGRectMake(0, WIDTH - 27, 27, 27);
@@ -85,23 +73,32 @@
     
     
 }
--(NSMutableArray *)dataArray{
-    
-    if (!_dataArray) {
-        
-        _dataArray = [NSMutableArray array];
-    }
-    
-    return _dataArray;
-}
+//-(NSMutableArray *)dataArray{
+//
+//    if (!_dataArray) {
+//
+//        _dataArray = [NSMutableArray array];
+//    }
+//
+//    return _dataArray;
+//}
 
 -(void)loadData{
     //
+    if (self.dataArray==nil) {
+        self.dataArray=[NSMutableArray array];
+    }else{
+        if (page==1) {
+            self.dataArray=[NSMutableArray array];
+        }
+        
+    }
+    
     self.manager = [AFHTTPRequestOperationManager manager];
     if (self.data ==nil) {//一次加载视频
         
-        SKLog(@"视频:%@",[NSString stringWithFormat:self.urlStr,self.page]);
-        [self.manager POST:[NSString stringWithFormat:self.urlStr,self.page] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        SKLog(@"视频:%@",[NSString stringWithFormat:self.urlStr,page]);
+        [self.manager POST:[NSString stringWithFormat:self.urlStr,page] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSArray * array = responseObject[@"list"];
             //            [self.dataArray removeAllObjects];
             for (NSDictionary * dict  in  array) {
@@ -110,45 +107,39 @@
                 [self.dataArray addObject:model];
             }
             [self.myTableView reloadData];
-            self.isUpdate = NO;
-            //停止刷新
-            [self.myTableView.header endRefreshing];
-            [self.myTableView.footer endRefreshing];
+           
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"网络有问题,请检查您的网络" delegate: self cancelButtonTitle:nil otherButtonTitles:@"好", nil];
             [alert show];
-            [self.myTableView.header endRefreshing];
-            [self.myTableView.footer endRefreshing];
             
         }];
         
         
     }else{
         
-        SKLog(@"图片,文字,声音 :%@",[NSString stringWithFormat:self.urlStr,self.data,self.page,self.type]);
-        [self.manager POST:[NSString stringWithFormat:self.urlStr,self.data,self.page,self.type] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        SKLog(@"图片,文字,声音 :%@",[NSString stringWithFormat:self.urlStr,self.data,page,self.type]);
+        [self.manager POST:[NSString stringWithFormat:self.urlStr,self.data,page,self.type] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSArray * array = responseObject[@"list"];
             for (NSDictionary * dict  in  array) {
                 NewModel * model = [NewModel modelWithDict:dict];
                 [self.dataArray addObject:model];
             }
             [self.myTableView reloadData];
-            self.isUpdate = NO;
-            //停止刷新
-            [self.myTableView.header endRefreshing];
-            [self.myTableView.footer endRefreshing];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"网络有问题,请检查您的网络" delegate: self cancelButtonTitle:nil otherButtonTitles:@"好", nil];
             [alert show];
-            [self.myTableView.header endRefreshing];
-            [self.myTableView.footer endRefreshing];
+          
+            
         }];
     }
-    
+    //停止刷新
+    [self.myTableView.header endRefreshing];
+    [self.myTableView.footer endRefreshing];
+    isUpDate = NO;
     
 }
 
@@ -161,6 +152,44 @@
     self.myTableView.dataSource =self;
     [self.view addSubview:self.myTableView];
     
+//    //下拉刷新
+//    [self.myTableView addLegendHeaderWithRefreshingBlock:^{
+//        if (!self.isUpdate) {
+//            self.isUpdate =!self.isUpdate;
+//            self.page = 1;
+//            //下拉刷新   清空以前的元素
+//            //            [self.dataArray removeAllObjects];
+//            [self loadData];
+//            
+//        }
+//    }];
+//    
+//    
+//    //上拉加载
+//    [self.myTableView addLegendFooterWithRefreshingBlock:^{
+//        if (!self.isUpdate) {
+//            self.page ++;
+//            self.isUpdate =!self.isUpdate;
+//            [self loadData];
+//        }
+//    }];
+    //添加上拉下拉刷新
+    [self.myTableView addLegendHeaderWithRefreshingBlock:^{
+        if (!isUpDate) {
+            isUpDate=!isUpDate;
+            page=1;
+            [self loadData];
+        }
+        
+    }];
+    [self.myTableView addLegendFooterWithRefreshingBlock:^{
+        if (!isUpDate) {
+            isUpDate=!isUpDate;
+            page++;
+            [self loadData];
+        }
+    }];
+
     
     
 }
