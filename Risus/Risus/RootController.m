@@ -57,11 +57,13 @@
 }
 
 -(void)createNavi{
+    
+    //用户
     UIButton * leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     leftBtn.frame = CGRectMake(0, 0, 27, 27);
     [leftBtn setImage:[UIImage imageNamed:@"tabbarSetup"] forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
-    
+    //设置
     UIButton * rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame = CGRectMake(0, WIDTH - 27, 27, 27);
     [rightBtn setImage:[UIImage imageNamed:@"mine-setting-iconN"] forState:UIControlStateNormal];
@@ -124,6 +126,7 @@
         
         
     }else{
+        
         SKLog(@"图片,文字,声音 :%@",[NSString stringWithFormat:self.urlStr,self.data,self.page,self.type]);
         [self.manager POST:[NSString stringWithFormat:self.urlStr,self.data,self.page,self.type] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSArray * array = responseObject[@"list"];
@@ -168,6 +171,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     static NSString * ID =@"cellId";
     CustomCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (!cell) {

@@ -60,19 +60,39 @@
     nav4.navigationBar.translucent = NO;
     video.title = @"视频";
     
-    //发布
-    PushController * mine = [[PushController alloc]init];
-    UINavigationController * nav5= [[UINavigationController alloc]initWithRootViewController:mine];
+//    //发布
+//    PushController * mine = [[PushController alloc]init];
+//    UINavigationController * nav5= [[UINavigationController alloc]initWithRootViewController:mine];
     
-    self.viewControllers = @[nav1,nav2,nav5,nav3,nav4];
+//    self.viewControllers = @[nav1,nav2,nav5,nav3,nav4];
+    self.viewControllers = @[nav1,nav2,nav3,nav4];
     
 }
 
 -(void)createTabbar{
     
-    NSArray * name = @[@"图片",@"段子",@"来一发",@"声音",@"视频"];
-    NSArray *unSelectImageName = @[@"tabbarQuotation.png",@"tabbarEssay.png",@"navigationButtonPublish",@"tabbarVoice.png",@"tabbarVideo.png"];
-    NSArray *selectImageName = @[@"tabbarQuotationClick.png",@"tabbarEssayClick.png",@"navigationButtonPublish",@"tabbarVoiceClick.png",@"tabbarVideoClick.png"];
+//    NSArray * name = @[@"图片",@"段子",@"来一发",@"声音",@"视频"];
+//    NSArray *unSelectImageName = @[@"tabbarQuotation.png",@"tabbarEssay.png",@"navigationButtonPublish",@"tabbarVoice.png",@"tabbarVideo.png"];
+//    NSArray *selectImageName = @[@"tabbarQuotationClick.png",@"tabbarEssayClick.png",@"navigationButtonPublish",@"tabbarVoiceClick.png",@"tabbarVideoClick.png"];
+//    
+//    for (int i=0; i<self.viewControllers.count; i++) {
+//        
+//        UITabBarItem * bar = self.tabBar.items[i];
+//        
+//        //设置图片
+//        
+//        UIImage * selectedimage = [UIImage imageNamed:selectImageName[i]];
+//        selectedimage  = [selectedimage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//        
+//        UIImage * unselectedimage = [UIImage imageNamed:unSelectImageName[i]];
+//        unselectedimage = [unselectedimage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//        
+//        bar = [bar initWithTitle:name[i] image:unselectedimage selectedImage:selectedimage];
+//
+//    }
+    NSArray * name = @[@"图片",@"段子",@"声音",@"视频"];
+    NSArray *unSelectImageName = @[@"tabbarQuotation.png",@"tabbarEssay.png",@"tabbarVoice.png",@"tabbarVideo.png"];
+    NSArray *selectImageName = @[@"tabbarQuotationClick.png",@"tabbarEssayClick.png",@"tabbarVoiceClick.png",@"tabbarVideoClick.png"];
     
     for (int i=0; i<self.viewControllers.count; i++) {
         
@@ -87,8 +107,11 @@
         unselectedimage = [unselectedimage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         
         bar = [bar initWithTitle:name[i] image:unselectedimage selectedImage:selectedimage];
-
+        
     }
+
+    
+    
     
     
 }

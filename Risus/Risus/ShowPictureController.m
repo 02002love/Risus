@@ -34,7 +34,7 @@
     headView = [[UIView alloc]initWithFrame:(CGRect){0,0,WIDTH,64}];
     headView.backgroundColor = [UIColor colorWithRed:245/256.0 green:245/256.0  blue:245/256.0  alpha:0.6];
     [self.view addSubview:headView];
-    UIButton * backBtn = [[UIButton alloc]initWithFrame:(CGRect){10,20,40,30}];
+    UIButton * backBtn = [[UIButton alloc]initWithFrame:(CGRect){10,35,40,30}];
     [backBtn setTitle:@"返回" forState: UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [headView addSubview:backBtn];
