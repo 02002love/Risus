@@ -13,6 +13,7 @@ static FMDBManager * manager = nil;
 //static NSMutableArray * dataArray;
 @interface FMDBManager()
 //@property (nonatomic,strong)NSMutableArray * dataArray;
+@property (nonatomic,assign)BOOL  isCollect;
 
 @end
 
@@ -76,7 +77,21 @@ static FMDBManager * manager = nil;
     return dataArray;
 }
 
--(void)addData:(NewModel * )model{
+-(BOOL)addData:(NewModel * )model{
+    
+    FMResultSet * result = [self.fm executeQuery:@"select id from favouriter"];
+    while ([result next]) {
+        if ([model._id isEqualToString:[result stringForColumn:@"id"]]) {
+            self.isCollect = YES;
+        }
+        
+    }
+    if (self.isCollect) {
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:nil message:@"您已收藏过" delegate: self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
+        self.isCollect = NO;
+        return NO;
+    }
     BOOL isSucceed = [self.fm executeUpdate:@"insert into favouriter values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",model.profile_image,model.name,model.create_time,model.text, model.image0,model.height,model.width,model.love,model.hate,model.repost,model.comment,model._id,model.voiceuri,model.videouri,[NSString stringWithFormat:@"%f",model.cellHeight]];
     if (isSucceed) {
         SKLog(@"插入成功");
@@ -85,19 +100,19 @@ static FMDBManager * manager = nil;
         SKLog(@"插入失败");
         
     }
+    return YES;
     
 }
 
--(void)deleteData:(NewModel * )model{
+-(BOOL)deleteData:(NewModel * )model{
     
     BOOL isSucceed = [self.fm executeUpdate:@"delete from favouriter where id = ?",model._id];
     if (isSucceed) {
         SKLog(@"删除成功");
     }else{
         SKLog(@"删除失败");
-        
-        
     }
+    return isSucceed;
 }
 
 @end

@@ -8,9 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "NewModel.h"
+
+@protocol reloadDataDelegate <NSObject>
+
+@optional
+
+-(void)refreshData:(CGFloat)index;
+
+@end
+
+
 @interface CustomCell : UITableViewCell
 @property (nonatomic,copy)void (^myBlock)(NSString *);
 @property (nonatomic,copy)void (^btuClick)(NSString *);
+@property (nonatomic,copy)NSString * isCollected;
+@property (nonatomic,weak)id<reloadDataDelegate> delegate;
+@property (nonatomic,assign)CGFloat index;
 
 
 -(void)configWithModel:(NewModel *)model;

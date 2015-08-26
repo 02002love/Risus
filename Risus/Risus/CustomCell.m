@@ -17,7 +17,7 @@
     NSString * itemId;      //顶踩的 URL 的 id
     AFHTTPRequestOperationManager * manager;
     NewModel * tempModel;
-    BOOL isCollected;
+    
 }
 
 
@@ -271,17 +271,20 @@
 //收藏,举报按钮
 -(void)exposerBtnCilck:(UIButton *)btn{
     
-    if (!isCollected) {
+    if ([self.isCollected isEqualToString:@"0"]) {
+        
         UIActionSheet * sheet = [[UIActionSheet alloc]initWithTitle:nil delegate: self cancelButtonTitle:@"取消" destructiveButtonTitle: nil otherButtonTitles:@"收藏",@"举报", nil];
+        sheet.tag = 1;
         sheet.delegate = self;
         [sheet showInView:self];
-        isCollected = YES;
-    }else{
-    
+        
+    }else if ([self.isCollected isEqualToString:@"1"]){
+        
         UIActionSheet * sheet = [[UIActionSheet alloc]initWithTitle:nil delegate: self cancelButtonTitle:@"取消" destructiveButtonTitle: nil otherButtonTitles:@"取消收藏",@"举报", nil];
+        sheet.tag = 0;
         sheet.delegate = self;
         [sheet showInView:self];
-    
+        
     }
     
     
@@ -291,11 +294,31 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     if (buttonIndex == 0){//收藏
-        
-        [[FMDBManager sharedFMDBManager] addData:tempModel];
-        [MBProgressHUD showSuccess:@"收藏成功"];
-        
-        
+        if (actionSheet.tag ==1) {//点击收藏
+            
+            if ([[FMDBManager sharedFMDBManager] addData:tempModel])
+            {
+                [MBProgressHUD showSuccess:@"收藏成功"];
+            }else{
+                [MBProgressHUD showError:@"收藏失败"];
+                
+            }
+        } else if (actionSheet.tag ==0){//点击取消收藏
+            
+            if ([[FMDBManager sharedFMDBManager] deleteData:tempModel])
+            {
+                [MBProgressHUD showSuccess:@"取消收藏成功"];
+                if ([self.delegate respondsToSelector:@selector(refreshData:)]) {
+                    [self.delegate refreshData:self.index];
+                }
+                
+            }else{
+                [MBProgressHUD showError:@"取消收藏失败"];
+                
+            }
+            
+            
+        }
     }
     else if(buttonIndex ==1){//举报
         
@@ -303,8 +326,7 @@
         [manager POST:[NSString stringWithFormat:JUBAO,itemId] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [MBProgressHUD showSuccess:@"举报成功"];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [MBProgressHUD showSuccess:@"举报失败"];
-            SKLog(@"456");
+            [MBProgressHUD showError:@"举报失败"];
         }];
         
         

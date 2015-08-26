@@ -10,11 +10,15 @@
 #import "CollectionController.h"
 #import "CustomCell.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "FMDBManager.h"
+#import "NewModel.h"
 
-@interface CollectionController ()<UITableViewDataSource,UITableViewDelegate>
+@interface CollectionController ()<UITableViewDataSource,UITableViewDelegate,reloadDataDelegate>
 {
     UITableView * _tableView;
-
+    NSIndexPath * path;
+    FMDBManager * manager;
+    
 }
 @end
 
@@ -25,6 +29,7 @@
     [self createTableView];
     _tableView.separatorStyle = 0;
     
+    self.title = @"我的收藏";
 }
 
 #pragma mark  创建TableView
@@ -53,6 +58,7 @@
     NewModel * model = self.dataArray[indexPath.row];
     
     [cell configWithModel:model];
+    cell.isCollected = @"1";//取消收藏
     cell.myBlock = ^(NSString* url){
         
         MPMoviePlayerViewController * voiceViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL URLWithString:url]];
@@ -67,7 +73,8 @@
         
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    cell.delegate = self;
+    cell.index = indexPath.row;
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -81,14 +88,66 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+//编辑模式
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle==1) {
+        
+        path =indexPath;
+        
+    }
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"是否要删除?" message:nil delegate: self cancelButtonTitle:@"取消" otherButtonTitles: @"确认", nil];
+    [alert show];
+    
+//    if (editingStyle==1) {
+//        
+//        path =indexPath;
+//        
+//    }
+    [_tableView reloadData];
+    
 }
-*/
 
+#pragma mark  ==alertView 代理==
+
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    
+    if (buttonIndex ==0) {
+        NSLog(@"%ld",(long)buttonIndex);
+        return;
+    }else{
+        manager = [FMDBManager sharedFMDBManager];
+        NSLog(@"%ld",(long)buttonIndex);
+        NewModel * model = self.dataArray[path.row];
+        [self.dataArray removeObjectAtIndex:path.row];
+        [manager deleteData:model];
+        //        [_tableView reloadData];
+        [_tableView deleteRowsAtIndexPaths:@[path]  withRowAnimation:UITableViewRowAnimationLeft];
+        
+    }
+    
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    path =indexPath;
+
+}
+
+#pragma mark  cell 代理的刷新方法
+-(void)refreshData:(CGFloat)index{
+    
+    SKLog(@"刷新数据==================");
+//    [_tableView reloadData];
+//    NSIndexPath * myIndex = [NSIndexPath indexPathForRow:index inSection:0];
+//   [_tableView deleteRowsAtIndexPaths:@[myIndex]  withRowAnimation:UITableViewRowAnimationLeft];
+    
+    [self.dataArray removeObjectAtIndex:index];
+    [_tableView reloadData];
+    
+    
+    
+}
 @end

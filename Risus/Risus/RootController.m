@@ -176,6 +176,7 @@
     NewModel * model = self.dataArray[indexPath.row];
     
     [cell configWithModel:model];
+    cell.isCollected = @"0";//未收藏
     cell.myBlock = ^(NSString* url){
         
         MPMoviePlayerViewController * voiceViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL URLWithString:url]];

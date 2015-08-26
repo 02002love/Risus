@@ -196,6 +196,8 @@
 		4E81271F1B89E654009D40A8 /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4E81271E1B89E654009D40A8 /* privacy.html */; };
 		4E8127211B89F79A009D40A8 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E8127201B89F79A009D40A8 /* logo.png */; };
 		4E8127231B89F8EA009D40A8 /* logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E8127221B89F8EA009D40A8 /* logo1.png */; };
+		4EF6E6061B8D6E4300F29E98 /* ThanksController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6E6051B8D6E4300F29E98 /* ThanksController.m */; };
+		4EF6E6081B8D6FEC00F29E98 /* thanks.html in Resources */ = {isa = PBXBuildFile; fileRef = 4EF6E6071B8D6FEC00F29E98 /* thanks.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -477,6 +479,9 @@
 		4E81271E1B89E654009D40A8 /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
 		4E8127201B89F79A009D40A8 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		4E8127221B89F8EA009D40A8 /* logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo1.png; sourceTree = "<group>"; };
+		4EF6E6041B8D6E4300F29E98 /* ThanksController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThanksController.h; sourceTree = "<group>"; };
+		4EF6E6051B8D6E4300F29E98 /* ThanksController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThanksController.m; sourceTree = "<group>"; };
+		4EF6E6071B8D6FEC00F29E98 /* thanks.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = thanks.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -619,6 +624,7 @@
 				4E8127191B89C701009D40A8 /* help.html */,
 				4E8127171B89C37E009D40A8 /* about.html */,
 				4E81271E1B89E654009D40A8 /* privacy.html */,
+				4EF6E6071B8D6FEC00F29E98 /* thanks.html */,
 				4E57EA201B86D88000397B72 /* navgationbar */,
 				4E57EA131B86D87300397B72 /* down */,
 				4E57E9BA1B86D86B00397B72 /* cell */,
@@ -820,6 +826,8 @@
 				4E7215011B8AFB31006CE807 /* ShowPictureController.m */,
 				4E52B3C51B8C8B420047211C /* CollectionController.h */,
 				4E52B3C61B8C8B420047211C /* CollectionController.m */,
+				4EF6E6041B8D6E4300F29E98 /* ThanksController.h */,
+				4EF6E6051B8D6E4300F29E98 /* ThanksController.m */,
 			);
 			name = "我的";
 			sourceTree = "<group>";
@@ -1123,6 +1131,7 @@
 				4E57E9B81B86D83200397B72 /* tabbarVoiceClick.png in Resources */,
 				4E57EA1B1B86D87300397B72 /* down_img_btn@2x.png in Resources */,
 				4E57EA3F1B86D88000397B72 /* nav-order-random.png in Resources */,
+				4EF6E6081B8D6FEC00F29E98 /* thanks.html in Resources */,
 				4E57E9EA1B86D86B00397B72 /* cell-button-line@2x.png in Resources */,
 				4E57EA431B86D88000397B72 /* navigationbarBackground.png in Resources */,
 				4E57E8F21B86C43700397B72 /* Images.xcassets in Resources */,
@@ -1271,6 +1280,7 @@
 				4E51F7571B885733000AD456 /* SDWebImageDownloaderOperation.m in Sources */,
 				4E7215021B8AFB31006CE807 /* ShowPictureController.m in Sources */,
 				4E51F7611B885733000AD456 /* UIView+WebCacheOperation.m in Sources */,
+				4EF6E6061B8D6E4300F29E98 /* ThanksController.m in Sources */,
 				4E7215111B8B32F7006CE807 /* FMDatabaseQueue.m in Sources */,
 				4E57E9731B86CCE200397B72 /* UIRefreshControl+AFNetworking.m in Sources */,
 				4E51F7561B885733000AD456 /* SDWebImageDownloader.m in Sources */,

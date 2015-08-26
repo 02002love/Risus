@@ -17,8 +17,8 @@
 
 -(NSMutableArray *)selectData;
 
--(void)addData:(NewModel *)model;
+-(BOOL)addData:(NewModel *)model;
 
--(void)deleteData:(NewModel * )model;
+-(BOOL)deleteData:(NewModel * )model;
 
 @end

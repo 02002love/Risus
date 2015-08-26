@@ -12,7 +12,7 @@
 #import "PrivacyController.h"
 #import "FMDBManager.h"
 #import "CollectionController.h"
-
+#import "ThanksController.h"
 @interface MineController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView * _myTableView;
@@ -26,6 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"设置";
+    UIBarButtonItem * item = [[UIBarButtonItem alloc]init];
+    item.title = @"返回";
+    self.navigationItem.backBarButtonItem = item;
     [self createTableView];
     
 }
@@ -33,7 +36,7 @@
     
     if (!_dataArray) {
         NSString * version =  [NSString stringWithFormat:@"当前版本:%@",VERSION];
-        _dataArray = @[version ,@"我的收藏",@"清除缓存",@"隐私政策",@"推荐朋友",@"帮助支持",@"关于我们"];
+        _dataArray = @[version ,@"本地收藏",@"清除缓存",@"隐私政策",@"帮助支持",@"关于我们",@"特别鸣谢"];
         
     }
     return _dataArray;
@@ -83,6 +86,7 @@
         }
             break;
         case 1:{//我的收藏
+            
             CollectionController * collectionVC = [[CollectionController alloc]init];
             collectionVC.dataArray =  [[FMDBManager sharedFMDBManager] selectData];;
             [self.navigationController pushViewController:collectionVC animated:YES];
@@ -112,22 +116,24 @@
         }
             break;
             
-        case 4:{//推荐朋友
-            
-            
-        }
-            break;
-        case 5:{//帮助
+        case 4:{//帮助
             
             HelpController * helpVC = [[HelpController alloc]init];
             [self.navigationController pushViewController:helpVC animated:YES];
             
         }
             break;
-        case 6:{//关于我们
+        case 5:{//关于我们
             
             AboutUsController * aboutVC = [[AboutUsController alloc]init];
             [self.navigationController pushViewController:aboutVC animated:YES];
+            
+        }
+            break;
+            
+        case 6:{//特别鸣谢
+             ThanksController * thanksVC = [[ThanksController alloc]init];
+            [self.navigationController pushViewController:thanksVC animated:YES];
             
         }
             break;
