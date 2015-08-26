@@ -33,7 +33,6 @@
 		4E51F7751B889452000AD456 /* playButtonPause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51F76F1B889452000AD456 /* playButtonPause@2x.png */; };
 		4E51F7761B889452000AD456 /* playButtonPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51F7701B889452000AD456 /* playButtonPlay.png */; };
 		4E51F7771B889452000AD456 /* playButtonPlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51F7711B889452000AD456 /* playButtonPlay@2x.png */; };
-		4E52B3991B8C490B0047211C /* libUMessage_Sdk_1.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E52B3971B8C490B0047211C /* libUMessage_Sdk_1.1.0.a */; };
 		4E52B3C41B8C652D0047211C /* FMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E52B3C31B8C652D0047211C /* FMDBManager.m */; };
 		4E52B3C71B8C8B420047211C /* CollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E52B3C61B8C8B420047211C /* CollectionController.m */; };
 		4E57E8E71B86C43700397B72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E57E8E61B86C43700397B72 /* main.m */; };
@@ -198,6 +197,8 @@
 		4E8127231B89F8EA009D40A8 /* logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E8127221B89F8EA009D40A8 /* logo1.png */; };
 		4EF6E6061B8D6E4300F29E98 /* ThanksController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6E6051B8D6E4300F29E98 /* ThanksController.m */; };
 		4EF6E6081B8D6FEC00F29E98 /* thanks.html in Resources */ = {isa = PBXBuildFile; fileRef = 4EF6E6071B8D6FEC00F29E98 /* thanks.html */; };
+		4EF6E60C1B8DF30C00F29E98 /* libPushSDK-1.8.5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF6E60B1B8DF30C00F29E98 /* libPushSDK-1.8.5.a */; };
+		4EF6E60E1B8DF39700F29E98 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EF6E60D1B8DF39700F29E98 /* PushConfig.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,8 +256,6 @@
 		4E51F76F1B889452000AD456 /* playButtonPause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playButtonPause@2x.png"; path = "../playButtonPause@2x.png"; sourceTree = "<group>"; };
 		4E51F7701B889452000AD456 /* playButtonPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playButtonPlay.png; path = ../playButtonPlay.png; sourceTree = "<group>"; };
 		4E51F7711B889452000AD456 /* playButtonPlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playButtonPlay@2x.png"; path = "../playButtonPlay@2x.png"; sourceTree = "<group>"; };
-		4E52B3971B8C490B0047211C /* libUMessage_Sdk_1.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.1.0.a; sourceTree = "<group>"; };
-		4E52B3981B8C490B0047211C /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
 		4E52B3C21B8C652D0047211C /* FMDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBManager.h; sourceTree = "<group>"; };
 		4E52B3C31B8C652D0047211C /* FMDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBManager.m; sourceTree = "<group>"; };
 		4E52B3C51B8C8B420047211C /* CollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionController.h; sourceTree = "<group>"; };
@@ -482,6 +481,9 @@
 		4EF6E6041B8D6E4300F29E98 /* ThanksController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThanksController.h; sourceTree = "<group>"; };
 		4EF6E6051B8D6E4300F29E98 /* ThanksController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThanksController.m; sourceTree = "<group>"; };
 		4EF6E6071B8D6FEC00F29E98 /* thanks.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = thanks.html; sourceTree = "<group>"; };
+		4EF6E60A1B8DF30C00F29E98 /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
+		4EF6E60B1B8DF30C00F29E98 /* libPushSDK-1.8.5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libPushSDK-1.8.5.a"; sourceTree = "<group>"; };
+		4EF6E60D1B8DF39700F29E98 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -491,9 +493,9 @@
 			files = (
 				4E7215201B8B5598006CE807 /* Security.framework in Frameworks */,
 				4E72151E1B8B5588006CE807 /* libz.dylib in Frameworks */,
+				4EF6E60C1B8DF30C00F29E98 /* libPushSDK-1.8.5.a in Frameworks */,
 				4E72151C1B8B5577006CE807 /* SystemConfiguration.framework in Frameworks */,
 				4E72151A1B8B5543006CE807 /* CoreTelephony.framework in Frameworks */,
-				4E52B3991B8C490B0047211C /* libUMessage_Sdk_1.1.0.a in Frameworks */,
 				4E7215181B8B552F006CE807 /* CFNetwork.framework in Frameworks */,
 				4E7215141B8B3BB2006CE807 /* libsqlite3.dylib in Frameworks */,
 			);
@@ -571,15 +573,6 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
-		4E52B3961B8C490B0047211C /* UMessage_Sdk_1.1.0 */ = {
-			isa = PBXGroup;
-			children = (
-				4E52B3971B8C490B0047211C /* libUMessage_Sdk_1.1.0.a */,
-				4E52B3981B8C490B0047211C /* UMessage.h */,
-			);
-			path = UMessage_Sdk_1.1.0;
-			sourceTree = "<group>";
-		};
 		4E57E8D81B86C43700397B72 = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +612,7 @@
 		4E57E8E41B86C43700397B72 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4EF6E60D1B8DF39700F29E98 /* PushConfig.plist */,
 				4E8127221B89F8EA009D40A8 /* logo1.png */,
 				4E8127201B89F79A009D40A8 /* logo.png */,
 				4E8127191B89C701009D40A8 /* help.html */,
@@ -698,7 +692,7 @@
 		4E57E90F1B86CBF200397B72 /* 第三方 */ = {
 			isa = PBXGroup;
 			children = (
-				4E52B3961B8C490B0047211C /* UMessage_Sdk_1.1.0 */,
+				4EF6E6091B8DF30C00F29E98 /* lib */,
 				4E7215031B8B32F7006CE807 /* FMDB */,
 				4E51F72D1B885733000AD456 /* SDWebImage */,
 				4E57E95B1B86CCE200397B72 /* UIKit+AFNetworking */,
@@ -1010,6 +1004,15 @@
 			path = FMDB;
 			sourceTree = "<group>";
 		};
+		4EF6E6091B8DF30C00F29E98 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				4EF6E60A1B8DF30C00F29E98 /* APService.h */,
+				4EF6E60B1B8DF30C00F29E98 /* libPushSDK-1.8.5.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1103,6 +1106,7 @@
 				4E57E9FB1B86D86B00397B72 /* mainCellDing.png in Resources */,
 				4E57EA031B86D86B00397B72 /* msgTitleCellBackground.png in Resources */,
 				4E57EA121B86D86B00397B72 /* tabbarVideoClick@2x.png in Resources */,
+				4EF6E60E1B8DF39700F29E98 /* PushConfig.plist in Resources */,
 				4E57E9FA1B86D86B00397B72 /* mainCellCommentClickN@2x.png in Resources */,
 				4E57EA1D1B86D87300397B72 /* down_img_btn_pressed@2x.png in Resources */,
 				4E8127231B89F8EA009D40A8 /* logo1.png in Resources */,
@@ -1331,7 +1335,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yangguang Luo (DQJ68HK2YD)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1354,6 +1358,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1375,7 +1380,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yangguang Luo (DQJ68HK2YD)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1391,6 +1396,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1401,18 +1407,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yangguang Luo (DQJ68HK2YD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yangguang Luo (DQJ68HK2YD)";
 				INFOPLIST_FILE = Risus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Risus/lib",
-					"$(PROJECT_DIR)/Risus/UMessage_Sdk_1.1.0",
-					"$(PROJECT_DIR)/Risus/UMSocial_Sdk_4.2.3",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "747157d0-f23a-46a8-b12c-f5b8c0dc1fe2";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Risus/lib";
 			};
 			name = Debug;
@@ -1422,18 +1426,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yangguang Luo (DQJ68HK2YD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yangguang Luo (DQJ68HK2YD)";
 				INFOPLIST_FILE = Risus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Risus/lib",
-					"$(PROJECT_DIR)/Risus/UMessage_Sdk_1.1.0",
-					"$(PROJECT_DIR)/Risus/UMSocial_Sdk_4.2.3",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "747157d0-f23a-46a8-b12c-f5b8c0dc1fe2";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Risus/lib";
 			};
 			name = Release;
