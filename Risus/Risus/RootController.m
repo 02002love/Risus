@@ -107,7 +107,7 @@
                 [self.dataArray addObject:model];
             }
             [self.myTableView reloadData];
-           
+            
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
@@ -132,7 +132,7 @@
             
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"网络有问题,请检查您的网络" delegate: self cancelButtonTitle:nil otherButtonTitles:@"好", nil];
             [alert show];
-          
+            
             
         }];
     }
@@ -152,30 +152,31 @@
     self.myTableView.dataSource =self;
     [self.view addSubview:self.myTableView];
     
-//    //下拉刷新
-//    [self.myTableView addLegendHeaderWithRefreshingBlock:^{
-//        if (!self.isUpdate) {
-//            self.isUpdate =!self.isUpdate;
-//            self.page = 1;
-//            //下拉刷新   清空以前的元素
-//            //            [self.dataArray removeAllObjects];
-//            [self loadData];
-//            
-//        }
-//    }];
-//    
-//    
-//    //上拉加载
-//    [self.myTableView addLegendFooterWithRefreshingBlock:^{
-//        if (!self.isUpdate) {
-//            self.page ++;
-//            self.isUpdate =!self.isUpdate;
-//            [self loadData];
-//        }
-//    }];
+    //    //下拉刷新
+    //    [self.myTableView addLegendHeaderWithRefreshingBlock:^{
+    //        if (!self.isUpdate) {
+    //            self.isUpdate =!self.isUpdate;
+    //            self.page = 1;
+    //            //下拉刷新   清空以前的元素
+    //            //            [self.dataArray removeAllObjects];
+    //            [self loadData];
+    //
+    //        }
+    //    }];
+    //
+    //
+    //    //上拉加载
+    //    [self.myTableView addLegendFooterWithRefreshingBlock:^{
+    //        if (!self.isUpdate) {
+    //            self.page ++;
+    //            self.isUpdate =!self.isUpdate;
+    //            [self loadData];
+    //        }
+    //    }];
     //添加上拉下拉刷新
     [self.myTableView addLegendHeaderWithRefreshingBlock:^{
         if (!isUpDate) {
+            SKLog(@"==================================================123");
             isUpDate=!isUpDate;
             page=1;
             [self loadData];
@@ -189,7 +190,7 @@
             [self loadData];
         }
     }];
-
+    
     
     
 }
@@ -206,9 +207,13 @@
     if (!cell) {
         cell = [[CustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
-    NewModel * model = self.dataArray[indexPath.row];
+    if (self.dataArray.count!= 0 ) {
+        NewModel * model = self.dataArray[indexPath.row];
+        [cell configWithModel:model];
+        
+    }
     
-    [cell configWithModel:model];
+    
     cell.isCollected = @"0";//未收藏
     cell.myBlock = ^(NSString* url){
         
@@ -231,14 +236,18 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NewModel * model = self.dataArray[indexPath.row];
-    return  model.cellHeight + SPACE;
+    if (self.dataArray.count != 0) {
+        NewModel * model = self.dataArray[indexPath.row];
+        return  model.cellHeight + SPACE;
+    }
+    return 0;
     
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    SKLog(@"%ld",(long)indexPath.row);
+    SKLog(@"%ld--------------------------------------",(long)indexPath.row);
+    
     NewModel * model = self.dataArray [indexPath.row];
     
     if (model.image0 ==nil) {
