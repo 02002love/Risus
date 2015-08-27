@@ -59,7 +59,7 @@
         }
     [APService setupWithOption:launchOptions];
     
-    
+    [UMSocialData setAppKey:UMENGKEY];
     
     
     return YES;

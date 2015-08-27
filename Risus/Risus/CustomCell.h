@@ -20,7 +20,7 @@
 
 @interface CustomCell : UITableViewCell
 @property (nonatomic,copy)void (^myBlock)(NSString *);
-@property (nonatomic,copy)void (^btuClick)(NSString *);
+@property (nonatomic,copy)void (^btnClick)(NewModel *);
 @property (nonatomic,copy)NSString * isCollected;
 @property (nonatomic,weak)id<reloadDataDelegate> delegate;
 @property (nonatomic,assign)CGFloat index;

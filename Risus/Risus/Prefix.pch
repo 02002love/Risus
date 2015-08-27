@@ -44,8 +44,11 @@
 //#import <TencentOpenAPI/QQApiInterface.h>
 //#import <TencentOpenAPI/TencentOAuth.h>
 
-//友盟推送
-//#import "UMessage.h"
+//友盟分享
+#import "UMSocial.h"
+
+#define  UMENGKEY @"55dc0c7367e58e543f002160"
+
 //极光推送
 #import "APService.h"
 

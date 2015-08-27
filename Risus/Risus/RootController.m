@@ -228,6 +228,16 @@
         [self.navigationController pushViewController:voiceViewController animated:YES];
         
     };
+    
+    cell.btnClick = ^(NewModel * model){
+        
+        UIImageView * temppicture = [[UIImageView alloc]init];
+        [temppicture  sd_setImageWithURL:[NSURL URLWithString:model.image0]];
+        [UMSocialSnsService presentSnsIconSheetView:self appKey:UMENGKEY shareText:model.text shareImage: temppicture.image shareToSnsNames:@[UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToEmail] delegate:nil];
+        
+    };
+    
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
     

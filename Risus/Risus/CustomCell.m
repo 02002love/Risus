@@ -10,6 +10,7 @@
 #import "CustomCell.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "FMDBManager.h"
+#import "UMengShareController.h"
 
 @interface CustomCell ()<UIActionSheetDelegate>
 {
@@ -17,6 +18,7 @@
     NSString * itemId;      //顶踩的 URL 的 id
     AFHTTPRequestOperationManager * manager;
     NewModel * tempModel;
+    UIImageView * tempImage;//为分享使用
     
 }
 
@@ -134,21 +136,22 @@
     [self.caiButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal] ;
     [self.caiButton addTarget:self action:@selector(dingAndCaiButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     self.caiButton.tag = 0;
+    
+    self.shareButton = [[UIButton alloc]initWithFrame:CGRectMake(10 +2*(WIDTH-20)*0.25 , 5, (WIDTH-20)*0.25, 15)];
+    [self.footView addSubview:self.shareButton];
+    [self.shareButton setImage:[UIImage imageNamed:@"mainCellShare"] forState:UIControlStateNormal];
+    self.shareButton.titleLabel.font = [UIFont systemFontOfSize:BTNFONTSIZE];
+    self.shareButton.titleLabel.textColor = [UIColor grayColor];
+    [self.shareButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal] ;
+    [self.shareButton addTarget:self action:@selector(shareButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 #warning 待完成
-//    self.shareButton = [[UIButton alloc]initWithFrame:CGRectMake(10 +2*(WIDTH-20)*0.25 , 5, (WIDTH-20)*0.25, 15)];
-//    [self.footView addSubview:self.shareButton];
-//    [self.shareButton setImage:[UIImage imageNamed:@"mainCellShare"] forState:UIControlStateNormal];
-//    self.shareButton.titleLabel.font = [UIFont systemFontOfSize:BTNFONTSIZE];
-//    self.shareButton.titleLabel.textColor = [UIColor grayColor];
-//    [self.shareButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal] ;
-//    
-//    
-//    self.commentButton = [[UIButton alloc]initWithFrame:CGRectMake(10 + 3*(WIDTH-20)*0.25 , 5, (WIDTH-20)*0.25, 15)];
-//    [self.footView addSubview:self.commentButton];
-//    [self.commentButton setImage:[UIImage imageNamed:@"mainCellComment"] forState:UIControlStateNormal];
-//    self.commentButton.titleLabel.font = [UIFont systemFontOfSize:BTNFONTSIZE];
-//    self.commentButton.titleLabel.textColor = [UIColor grayColor];
-//    [self.commentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal] ;
+    
+    //    self.commentButton = [[UIButton alloc]initWithFrame:CGRectMake(10 + 3*(WIDTH-20)*0.25 , 5, (WIDTH-20)*0.25, 15)];
+    //    [self.footView addSubview:self.commentButton];
+    //    [self.commentButton setImage:[UIImage imageNamed:@"mainCellComment"] forState:UIControlStateNormal];
+    //    self.commentButton.titleLabel.font = [UIFont systemFontOfSize:BTNFONTSIZE];
+    //    self.commentButton.titleLabel.textColor = [UIColor grayColor];
+    //    [self.commentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal] ;
     
 }
 
@@ -200,9 +203,10 @@
     [self.dingButton setTitle:model.love forState:UIControlStateNormal];
     [self.caiButton setTitle:model.hate forState:UIControlStateNormal];
     
+    [self.shareButton setTitle:model.repost forState:UIControlStateNormal];
+    
 #warning 待完成
-//    [self.shareButton setTitle:model.repost forState:UIControlStateNormal];
-//    [self.commentButton setTitle:model.comment forState:UIControlStateNormal];
+    //    [self.commentButton setTitle:model.comment forState:UIControlStateNormal];
     
 }
 
@@ -336,4 +340,12 @@
     
     
 }
+//分享按钮
+-(void)shareButtonClicked:(UIButton *)btn{
+    
+    self.btnClick(tempModel);
+    
+}
+
+
 @end
