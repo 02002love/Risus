@@ -19,8 +19,12 @@
 
 
 @interface CustomCell : UITableViewCell
+
+
+//@property (nonatomic,strong) NewModel * tempModel;        
 @property (nonatomic,copy)void (^myBlock)(NSString *);
-@property (nonatomic,copy)void (^btnClick)(NewModel *);
+@property (nonatomic,copy)void (^btnClick)(id);
+@property (nonatomic,copy)void (^imageClick)(id);
 @property (nonatomic,copy)NSString * isCollected;
 @property (nonatomic,weak)id<reloadDataDelegate> delegate;
 @property (nonatomic,assign)CGFloat index;

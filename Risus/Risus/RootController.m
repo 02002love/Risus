@@ -35,8 +35,7 @@
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     backItem.title = @"返回";
     self.navigationItem.backBarButtonItem = backItem;
-    
-    
+ 
     
 }
 
@@ -65,23 +64,9 @@
     
     MineController * vc = [[MineController alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
-    
     [self.navigationController pushViewController:vc animated:YES];
-    //    [self presentViewController:vc animated:YES completion:nil];
-    
-    
-    
-    
+
 }
-//-(NSMutableArray *)dataArray{
-//
-//    if (!_dataArray) {
-//
-//        _dataArray = [NSMutableArray array];
-//    }
-//
-//    return _dataArray;
-//}
 
 -(void)loadData{
     //
@@ -95,12 +80,12 @@
     }
     
     self.manager = [AFHTTPRequestOperationManager manager];
+    [MBProgressHUD showMessage:@"正在加载..." toView:self.view];
     if (self.data ==nil) {//一次加载视频
         
         SKLog(@"视频:%@",[NSString stringWithFormat:self.urlStr,page]);
         [self.manager POST:[NSString stringWithFormat:self.urlStr,page] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSArray * array = responseObject[@"list"];
-            //            [self.dataArray removeAllObjects];
             for (NSDictionary * dict  in  array) {
                 NewModel * model = [NewModel modelWithDict:dict];
                 
@@ -108,14 +93,12 @@
             }
             [self.myTableView reloadData];
             
-            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"网络有问题,请检查您的网络" delegate: self cancelButtonTitle:nil otherButtonTitles:@"好", nil];
             [alert show];
             
         }];
-        
         
     }else{
         
@@ -127,7 +110,6 @@
                 [self.dataArray addObject:model];
             }
             [self.myTableView reloadData];
-            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"网络有问题,请检查您的网络" delegate: self cancelButtonTitle:nil otherButtonTitles:@"好", nil];
@@ -135,7 +117,12 @@
             
             
         }];
+        
     }
+    [UIView animateWithDuration:2.5 animations:^{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+    }];
     //停止刷新
     [self.myTableView.header endRefreshing];
     [self.myTableView.footer endRefreshing];
@@ -152,31 +139,10 @@
     self.myTableView.dataSource =self;
     [self.view addSubview:self.myTableView];
     
-    //    //下拉刷新
-    //    [self.myTableView addLegendHeaderWithRefreshingBlock:^{
-    //        if (!self.isUpdate) {
-    //            self.isUpdate =!self.isUpdate;
-    //            self.page = 1;
-    //            //下拉刷新   清空以前的元素
-    //            //            [self.dataArray removeAllObjects];
-    //            [self loadData];
-    //
-    //        }
-    //    }];
-    //
-    //
-    //    //上拉加载
-    //    [self.myTableView addLegendFooterWithRefreshingBlock:^{
-    //        if (!self.isUpdate) {
-    //            self.page ++;
-    //            self.isUpdate =!self.isUpdate;
-    //            [self loadData];
-    //        }
-    //    }];
+    
     //添加上拉下拉刷新
     [self.myTableView addLegendHeaderWithRefreshingBlock:^{
         if (!isUpDate) {
-            SKLog(@"==================================================123");
             isUpDate=!isUpDate;
             page=1;
             [self loadData];
@@ -235,8 +201,27 @@
         [temppicture  sd_setImageWithURL:[NSURL URLWithString:model.image0]];
         [UMSocialSnsService presentSnsIconSheetView:self appKey:UMENGKEY shareText:model.text shareImage: temppicture.image shareToSnsNames:@[UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToEmail] delegate:nil];
         
+        
+        
+        
+        
     };
     
+    cell.imageClick= ^(NewModel * model){
+        
+        if (model.image0 ==nil) {
+            if ([@"" isEqualToString:model.voiceuri] ||[@"" isEqualToString: model.videouri]) {
+                return;
+            }
+        }
+        ShowPictureController * showPictureVC = [[ShowPictureController alloc]init];
+        showPictureVC.hidesBottomBarWhenPushed = YES;
+        showPictureVC.pictureName = model.image0;
+        showPictureVC.pictureHeight = model.height;
+        showPictureVC.pictureWidth = model.width;
+        [self presentViewController:showPictureVC animated:YES completion:nil];
+        
+    };
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -254,24 +239,4 @@
     
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    SKLog(@"%ld--------------------------------------",(long)indexPath.row);
-    
-    NewModel * model = self.dataArray [indexPath.row];
-    
-    if (model.image0 ==nil) {
-        if ([@"" isEqualToString:model.voiceuri] ||[@"" isEqualToString: model.videouri]) {
-            return;
-        }
-    }
-    ShowPictureController * showPictureVC = [[ShowPictureController alloc]init];
-    showPictureVC.hidesBottomBarWhenPushed = YES;
-    showPictureVC.pictureName = model.image0;
-    showPictureVC.pictureHeight = model.height;
-    showPictureVC.pictureWidth = model.width;
-    [self presentViewController:showPictureVC animated:YES completion:nil];
-    
-    
-}
 @end

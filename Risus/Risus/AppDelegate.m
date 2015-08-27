@@ -17,11 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
-    //    [APService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |UIUserNotificationTypeSound |UIUserNotificationTypeAlert)categories:nil];
-    //    [[UIApplication sharedApplication] registerForRemoteNotifications]; [APService setupWithOption:launchOptions];
-    
+   
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     MainTabbarController * rootVC = [[MainTabbarController alloc]init];
@@ -30,6 +26,7 @@
     [self.window makeKeyAndVisible];
     
     
+    //极光推送
     
     //Required
     #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
@@ -43,9 +40,7 @@
         } else {
             //categories nil
             [APService
-             registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                 UIRemoteNotificationTypeSound |
-                                                 UIRemoteNotificationTypeAlert)
+             registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert)
 #else
              //categories nil
              categories:nil];
@@ -64,8 +59,6 @@
     
     return YES;
 }
-
-
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Required

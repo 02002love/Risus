@@ -56,8 +56,8 @@
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 //cell 头和脚的高度
-#define HEADHEIGHT 40
-#define FOOTHEIGHT 25
+#define HEADHEIGHT 50
+#define FOOTHEIGHT 30
 
 //cell的间隙
 #define SPACE 5

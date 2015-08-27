@@ -10,15 +10,16 @@
 #import "CustomCell.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "FMDBManager.h"
-#import "UMengShareController.h"
 
 @interface CustomCell ()<UIActionSheetDelegate>
 {
-    NSString * _url;             //视频音频的 URL
-    NSString * itemId;      //顶踩的 URL 的 id
+    
+    NSString * _url;                //视频音频的 URL
+    NSString * itemId;              //顶踩的 URL 的 id
     AFHTTPRequestOperationManager * manager;
-    NewModel * tempModel;
-    UIImageView * tempImage;//为分享使用
+    NewModel * tempModel;           //临时存储 model
+    UIImageView * tempImage;        //为分享使用
+    NSString * imageURL ;            //配图的 URL 供 block 使用
     
 }
 
@@ -89,8 +90,9 @@
     [self.headView addSubview:self.nameLabel];
     self.dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(50, 18, 100, 10)];
     [self.headView addSubview:self.dateLabel];
-    self.exposerButton = [[UIButton alloc]initWithFrame:CGRectMake(WIDTH - 40, 10, 20, 20)];
+    self.exposerButton = [[UIButton alloc]initWithFrame:CGRectMake(WIDTH - 40, 0, 30, 50)];
     [self.exposerButton addTarget:self action:@selector(exposerBtnCilck:) forControlEvents:UIControlEventTouchUpInside];
+    [self.exposerButton setImage:[UIImage imageNamed:@"Profile_reportIcon"] forState:UIControlStateNormal];
     [self.headView addSubview:self.exposerButton];
     
     
@@ -98,8 +100,10 @@
     [self.contentView addSubview:self.myTextLabel];
     
     //配图
+    
     self.pictureImageview = [[UIImageView alloc]initWithFrame:CGRectZero];
     [self.contentView addSubview:self.pictureImageview];
+    
     
     
     //音频播放键
@@ -121,7 +125,7 @@
     self.footView = [[UIView alloc]initWithFrame:CGRectZero];
     [self.contentView addSubview:self.footView];
     
-    self.dingButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 5, (WIDTH-20)*0.25, 15)];
+    self.dingButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 5, (WIDTH-20)*0.4, 30)];
     self.dingButton.titleLabel.font = [UIFont systemFontOfSize:BTNFONTSIZE];
     [self.dingButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal] ;
     [self.footView addSubview:self.dingButton];
@@ -129,7 +133,7 @@
     [self.dingButton addTarget:self action:@selector(dingAndCaiButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     self.dingButton.tag = 1;
     
-    self.caiButton = [[UIButton alloc]initWithFrame:CGRectMake(10 + (WIDTH-20)*0.25, 5, (WIDTH-20)*0.25, 15)];
+    self.caiButton = [[UIButton alloc]initWithFrame:CGRectMake(10 + (WIDTH-20)*0.25, 5, (WIDTH-20)*0.4, 30)];
     [self.footView addSubview:self.caiButton];
     [self.caiButton setImage:[UIImage imageNamed:@"mainCellCai"] forState:UIControlStateNormal];
     self.caiButton.titleLabel.font = [UIFont systemFontOfSize:BTNFONTSIZE];
@@ -137,7 +141,7 @@
     [self.caiButton addTarget:self action:@selector(dingAndCaiButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     self.caiButton.tag = 0;
     
-    self.shareButton = [[UIButton alloc]initWithFrame:CGRectMake(10 +2*(WIDTH-20)*0.25 , 5, (WIDTH-20)*0.25, 15)];
+    self.shareButton = [[UIButton alloc]initWithFrame:CGRectMake(10 +2*(WIDTH-20)*0.25 , 5, (WIDTH-20)*0.4, 30)];
     [self.footView addSubview:self.shareButton];
     [self.shareButton setImage:[UIImage imageNamed:@"mainCellShare"] forState:UIControlStateNormal];
     self.shareButton.titleLabel.font = [UIFont systemFontOfSize:BTNFONTSIZE];
@@ -167,7 +171,7 @@
     self.dateLabel.text = model.create_time;
     self.dateLabel.textColor = [UIColor grayColor];
     self.dateLabel.font = [UIFont systemFontOfSize:10];
-    [self.exposerButton setImage:[UIImage imageNamed:@"Profile_reportIcon"] forState:UIControlStateNormal];
+    
     
     self.myTextLabel.text = model.text;
     self.myTextLabel.numberOfLines = 0;
@@ -181,8 +185,15 @@
     NSString  *filePath = [[NSBundle bundleWithPath:[[NSBundle mainBundle] bundlePath]] pathForResource:@"Loading.gif" ofType:nil];
     NSData  *imageData = [NSData dataWithContentsOfFile:filePath];
     //加载动图
+    imageURL = model.image0;
     [self.pictureImageview sd_setImageWithURL:[NSURL URLWithString:model.image0] placeholderImage:[UIImage sd_animatedGIFWithData:imageData]];
     CGFloat pictureHeight = [model.height floatValue] > 400.0 ? 400.0 : model.height.floatValue;
+//    //为图片添加一个手势
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageBtnClicked)];
+    self.pictureImageview.userInteractionEnabled = YES;
+    [self.pictureImageview addGestureRecognizer:tap];
+    
+    
     self.pictureImageview.frame = CGRectMake(5, HEADHEIGHT+textHeight +SPACE, WIDTH -10, pictureHeight);
     
     //播放声音
@@ -347,5 +358,9 @@
     
 }
 
+-(void)imageBtnClicked{
+    SKLog(@"你好,我来了");
+    self.imageClick(tempModel);
+}
 
 @end
