@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E4B6E6E1B903D2D004061EE /* logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E4B6E6D1B903D2D004061EE /* logo1.png */; };
+		4E4B6E701B9041E7004061EE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E4B6E6F1B9041E7004061EE /* Images.xcassets */; };
 		4E51F7511B885733000AD456 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E51F72F1B885733000AD456 /* MKAnnotationView+WebCache.m */; };
 		4E51F7521B885733000AD456 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E51F7311B885733000AD456 /* NSData+ImageContentType.m */; };
 		4E51F7531B885733000AD456 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E51F7331B885733000AD456 /* SDImageCache.m */; };
@@ -37,7 +39,6 @@
 		4E52B3C71B8C8B420047211C /* CollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E52B3C61B8C8B420047211C /* CollectionController.m */; };
 		4E57E8E71B86C43700397B72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E57E8E61B86C43700397B72 /* main.m */; };
 		4E57E8EA1B86C43700397B72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E57E8E91B86C43700397B72 /* AppDelegate.m */; };
-		4E57E8F21B86C43700397B72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E57E8F11B86C43700397B72 /* Images.xcassets */; };
 		4E57E9011B86C43800397B72 /* RisusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E57E9001B86C43800397B72 /* RisusTests.m */; };
 		4E57E9241B86CC1900397B72 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E57E9121B86CC1900397B72 /* AFHTTPRequestOperation.m */; };
 		4E57E9251B86CC1900397B72 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E57E9141B86CC1900397B72 /* AFHTTPRequestOperationManager.m */; };
@@ -193,8 +194,6 @@
 		4E81271A1B89C701009D40A8 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 4E8127191B89C701009D40A8 /* help.html */; };
 		4E81271D1B89D23D009D40A8 /* HelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E81271C1B89D23D009D40A8 /* HelpController.m */; };
 		4E81271F1B89E654009D40A8 /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4E81271E1B89E654009D40A8 /* privacy.html */; };
-		4E8127211B89F79A009D40A8 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E8127201B89F79A009D40A8 /* logo.png */; };
-		4E8127231B89F8EA009D40A8 /* logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E8127221B89F8EA009D40A8 /* logo1.png */; };
 		4E93E42F1B8EEE6B004A8214 /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E93E4141B8EEE6B004A8214 /* UMSocialLocalizable.strings */; };
 		4E93E4301B8EEE6B004A8214 /* libUMSocial_Sdk_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E93E4221B8EEE6B004A8214 /* libUMSocial_Sdk_4.2.3.a */; };
 		4E93E4311B8EEE6B004A8214 /* libUMSocial_Sdk_Comment_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E93E4231B8EEE6B004A8214 /* libUMSocial_Sdk_Comment_4.2.3.a */; };
@@ -224,6 +223,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E4B6E6D1B903D2D004061EE /* logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo1.png; sourceTree = "<group>"; };
+		4E4B6E6F1B9041E7004061EE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4E51F72E1B885733000AD456 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		4E51F72F1B885733000AD456 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		4E51F7301B885733000AD456 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -277,7 +278,6 @@
 		4E57E8E61B86C43700397B72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4E57E8E81B86C43700397B72 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4E57E8E91B86C43700397B72 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4E57E8F11B86C43700397B72 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4E57E8FA1B86C43800397B72 /* RisusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RisusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E57E8FF1B86C43800397B72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E57E9001B86C43800397B72 /* RisusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RisusTests.m; sourceTree = "<group>"; };
@@ -488,8 +488,6 @@
 		4E81271B1B89D23D009D40A8 /* HelpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpController.h; sourceTree = "<group>"; };
 		4E81271C1B89D23D009D40A8 /* HelpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpController.m; sourceTree = "<group>"; };
 		4E81271E1B89E654009D40A8 /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
-		4E8127201B89F79A009D40A8 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		4E8127221B89F8EA009D40A8 /* logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo1.png; sourceTree = "<group>"; };
 		4E93E4151B8EEE6B004A8214 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		4E93E4171B8EEE6B004A8214 /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		4E93E4181B8EEE6B004A8214 /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -641,7 +639,6 @@
 				4E57E90F1B86CBF200397B72 /* 第三方 */,
 				4E57EA561B8706F900397B72 /* 最新 */,
 				4E57E90D1B86CAD600397B72 /* 公共 */,
-				4E57E8F11B86C43700397B72 /* Images.xcassets */,
 				4E57E8E41B86C43700397B72 /* Supporting Files */,
 			);
 			path = Risus;
@@ -651,13 +648,13 @@
 			isa = PBXGroup;
 			children = (
 				4EF6E60D1B8DF39700F29E98 /* PushConfig.plist */,
-				4E8127221B89F8EA009D40A8 /* logo1.png */,
-				4E8127201B89F79A009D40A8 /* logo.png */,
+				4E4B6E6D1B903D2D004061EE /* logo1.png */,
 				4E8127191B89C701009D40A8 /* help.html */,
 				4E8127171B89C37E009D40A8 /* about.html */,
 				4E81271E1B89E654009D40A8 /* privacy.html */,
 				4EF6E6071B8D6FEC00F29E98 /* thanks.html */,
 				4E57EA201B86D88000397B72 /* navgationbar */,
+				4E4B6E6F1B9041E7004061EE /* Images.xcassets */,
 				4E57EA131B86D87300397B72 /* down */,
 				4E57E9BA1B86D86B00397B72 /* cell */,
 				4E57E98D1B86D83200397B72 /* tabbar */,
@@ -1197,7 +1194,6 @@
 				4E57E9FA1B86D86B00397B72 /* mainCellCommentClickN@2x.png in Resources */,
 				4E93E4361B8EEE6B004A8214 /* UMShareEditViewControlleriPad.xib in Resources */,
 				4E57EA1D1B86D87300397B72 /* down_img_btn_pressed@2x.png in Resources */,
-				4E8127231B89F8EA009D40A8 /* logo1.png in Resources */,
 				4E57EA461B86D88000397B72 /* navigationButtonRefresh@2x.png in Resources */,
 				4E57EA0C1B86D86B00397B72 /* Profile_womanIcon@2x.png in Resources */,
 				4E57E9FC1B86D86B00397B72 /* mainCellDing@2x.png in Resources */,
@@ -1229,14 +1225,13 @@
 				4EF6E6081B8D6FEC00F29E98 /* thanks.html in Resources */,
 				4E57E9EA1B86D86B00397B72 /* cell-button-line@2x.png in Resources */,
 				4E57EA431B86D88000397B72 /* navigationbarBackground.png in Resources */,
-				4E57E8F21B86C43700397B72 /* Images.xcassets in Resources */,
 				4E57E9E81B86D86B00397B72 /* background@2x.png in Resources */,
 				4E57EA411B86D88000397B72 /* navigationbarBackground-44.png in Resources */,
 				4E51F7731B889452000AD456 /* playButtonClick@2x.png in Resources */,
 				4E57E9F21B86D86B00397B72 /* mainCellBackground@2x.png in Resources */,
 				4E57EA101B86D86B00397B72 /* tabbarVideo@2x.png in Resources */,
-				4E8127211B89F79A009D40A8 /* logo.png in Resources */,
 				4E93E42F1B8EEE6B004A8214 /* UMSocialLocalizable.strings in Resources */,
+				4E4B6E6E1B903D2D004061EE /* logo1.png in Resources */,
 				4E57E9FD1B86D86B00397B72 /* mainCellDingClick.png in Resources */,
 				4E57E9A91B86D83200397B72 /* tabbarBuyClick@2x.png in Resources */,
 				4E81271F1B89E654009D40A8 /* privacy.html in Resources */,
@@ -1248,6 +1243,7 @@
 				4E8127181B89C37E009D40A8 /* about.html in Resources */,
 				4E57EA4F1B86DAB100397B72 /* navigationButtonPublish.png in Resources */,
 				4E57E9F01B86D86B00397B72 /* mainCell@2x.png in Resources */,
+				4E4B6E701B9041E7004061EE /* Images.xcassets in Resources */,
 				4E57E9B21B86D83200397B72 /* tabbarSetup.png in Resources */,
 				4E57EA0B1B86D86B00397B72 /* Profile_womanIcon.png in Resources */,
 				4E57E9F91B86D86B00397B72 /* mainCellCommentClickN.png in Resources */,
@@ -1443,7 +1439,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yangguang Luo (DQJ68HK2YD)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: yangguang Luo (3BFN843GX2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: yangguang Luo (3BFN843GX2)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1488,7 +1485,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yangguang Luo (DQJ68HK2YD)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: yangguang Luo (3BFN843GX2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: yangguang Luo (3BFN843GX2)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1516,7 +1514,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: yangguang Luo (3BFN843GX2)";
 				INFOPLIST_FILE = Risus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1524,9 +1522,10 @@
 					"$(inherited)",
 					"$(SRCROOT)/Risus/lib",
 					"$(PROJECT_DIR)/Risus/UMSocial_Sdk_4.2.3",
+					"$(PROJECT_DIR)/Risus/SDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9ed26713-1ce9-4047-896e-100b212fb110";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Risus/lib";
 			};
 			name = Debug;
@@ -1537,7 +1536,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: yangguang Luo (3BFN843GX2)";
 				INFOPLIST_FILE = Risus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1545,9 +1544,10 @@
 					"$(inherited)",
 					"$(SRCROOT)/Risus/lib",
 					"$(PROJECT_DIR)/Risus/UMSocial_Sdk_4.2.3",
+					"$(PROJECT_DIR)/Risus/SDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9ed26713-1ce9-4047-896e-100b212fb110";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Risus/lib";
 			};
 			name = Release;

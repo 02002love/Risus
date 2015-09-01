@@ -1,0 +1,32 @@
+//
+//  TIMAudioRecorder.h
+//  TIM_SDK
+//
+//  Created by xiang on 5/21/15.
+//
+//
+
+#import <AVFoundation/AVFoundation.h>
+#import <Foundation/Foundation.h>
+
+@interface TIMVoice : NSObject<AVAudioRecorderDelegate,AVAudioPlayerDelegate>
+
+@property CGFloat progress; //音频强度(已处理范围为0到1),录音时0.1秒更新一次
+@property BOOL isAutoPlayMode; //播放时，是否自动切换扬声器和听筒模式
+@property BOOL isDefaultSpeakerMode; //是否默认扬声器播放
+@property BOOL isPlaying; //是否正在播放
+
++(id)getInstance;
+
+#pragma mark 录音相关
+-(void)startRecording:(NSString*)toUserID; //录音
+-(void)cancelRecording; //取消录音
+-(NSString*)finishRecording:(uint32_t*)length; //录音完成,返回录音的本地存储路径, 和录音的时长(单位:秒)
+
+#pragma mark 播放相关
+//filePath:录音函数finishRecording返回的结果 或 收到语音消息的本地存储路径
+-(float)getRecordingLength:(NSString*)filePath;
+-(void)playRecording:(NSString*)filePath; //播放录音
+-(void)stopPlaying; //取消播放
+
+@end

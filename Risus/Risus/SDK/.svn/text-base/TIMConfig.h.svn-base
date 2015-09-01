@@ -1,0 +1,20 @@
+//
+//  配置文件，启动时的初始化配置
+//  TIM_SDK
+//
+//  Created by xiang on 3/31/15.
+//
+//
+
+@interface TIMConfig : NSObject
+
+//收到新消息的回调
+typedef void (^NewMsgCallback)(NSArray* msgList,NSString* loginUser);
+
+@property BOOL isDebugMode; //是否调试模式，开启所有Log
+@property (nonatomic,copy) NewMsgCallback newMessageCallback;
+@property int envType; //环境类型
+
++(id)getInstance;
+
+@end

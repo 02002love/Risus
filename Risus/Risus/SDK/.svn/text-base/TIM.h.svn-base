@@ -1,0 +1,78 @@
+//
+//  TIM.h
+//
+//  核心头文件，提供对外核心API
+//
+//  Created by xiang on 15/3/27.
+//
+//
+#import "TIMMessage.h"
+
+#define TIM_SDK_VERSION @"0.6"
+
+@interface TIM : NSObject
+
+//回调的Block定义
+typedef void (^SuccessCallback)(void);
+typedef void (^ErrorCallback)(int errorCode);
+typedef void (^MessageSuccessCallback)(TIMMessage*);
+
+//启动IM
++(void)start:(NSDictionary*)launchOptions appID:(uint32_t)appID appKey:(NSString*)appKey secKey:(NSString*)secKey SuccessCallback:(SuccessCallback)successBlock errorCallback:(ErrorCallback)errorCallback;
+
+#pragma mark 用户操作
+//用户登录
++(void)login:(NSString*)loginUserID ticket:(NSString*)ticket successCallback:(SuccessCallback)successBlock errorCallback:(ErrorCallback)errorCallback;
+
+//用户注销: 会注销当前已登录的用户
++(void)logout:(SuccessCallback)successBlock errorCallback:(ErrorCallback)errorCallback;
+
+#pragma mark 发送数据接口
+//发送消息, type(0:单聊 1:群聊)
++(void)sendMessage:(NSString*)toUserID message:(NSString *)message type:(int)type successCallback:(MessageSuccessCallback)successBlock errorCallback:(ErrorCallback)errorCallback;
+
+//发送图片, type(0:单聊 1:群聊)
++(void)sendPic:(NSString*)toUserID img:(UIImage*)img isOriginal:(BOOL)isOriginal type:(int)type successCallback:(MessageSuccessCallback)successBlock errorCallback:(ErrorCallback)errorCallback;
+
++(void)sendVoice:(NSString*)toUserID localPath:(NSString*)localPath duration:(uint32_t)duration type:(int)type successCallback:(MessageSuccessCallback)successBlock errorCallback:(ErrorCallback)errorCallback;
+
+//是否可以发送新文件(包括图片、语音。文件发送是单任务,如有任务运行,需要等结束)
++(BOOL)ifCanSendNewFile;
+
+//获取图片显示或下载的URL前缀
++(NSString*)getPicURLPrefix;
+
+#pragma mark 本地数据接口
+
+//获取当前登录的用户
++(NSString*)getLoginUser;
+
+//获取当前登录用户和userID的历史消息记录总数量(成功的记录)
++(NSInteger)getLoginUserMsgCount:(NSString*)conversationID;
+
+//获取当前登录用户和userID的分页消息记录(成功的记录)
++(NSArray*)getLoginUserMessages:(NSString*)conversationID pageIndex:(NSInteger)pageIndex pageSize:(NSInteger)pageSize;
+
+//获取当前登录用户的最近收发消息的会话ID列表
++(NSArray*)getConversationIDList:(NSInteger)pageIndex pageSize:(NSInteger)pageSize;
+
+//删除指定登录过的用户的所有本地数据
++(void)deleteUserData:(NSString*)loginUserID;
+
+//删除指定登录过的用户,某个会话的本地存储记录
++(void)deleteConversationIDData:(NSString*)loginUserID conversationID:(NSString*)conversationID;
+
+//删除本地的一条消息记录, 此处的参数TIMMessage:是getChatUserIDList接口返回的数组中的成员
++(void)deleteMessage:(TIMMessage*)message;
+
+//删除本地的一条消息记录, 通过msgID(发送时为0)和本地时间来确定一条本地消息记录
++(void)deleteMessage:(uint64_t)msgID localUTime:(uint64_t)localUTime;
+
+#pragma mark APNS相关接口
+//注册设备
++(NSString*)registerDevice:(NSData*)deviceToken successCallback:(SuccessCallback)successCallback errorCallback:(ErrorCallback)errorCallback;
+
+//点击iOS通知的反馈(app在运行，包括前台和后台)
++(void)handleReceiveNotification:(NSDictionary*)userInfo;
+
+@end

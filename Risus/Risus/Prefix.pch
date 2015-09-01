@@ -44,6 +44,14 @@
 //#import <TencentOpenAPI/QQApiInterface.h>
 //#import <TencentOpenAPI/TencentOAuth.h>
 
+////腾讯 Talk LBS
+//#import "TIM.h"
+//#import "TIMConfig.h"
+//#import "TIMMessage.h"
+//#import "TIMVoice.h"
+
+
+
 //友盟分享
 #import "UMSocial.h"
 

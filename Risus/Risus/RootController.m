@@ -80,9 +80,9 @@
     }
     
     self.manager = [AFHTTPRequestOperationManager manager];
-    [MBProgressHUD showMessage:@"正在加载..." toView:self.view];
+//    [MBProgressHUD showMessage:@"正在加载..." toView:self.view];
     if (self.data ==nil) {//一次加载视频
-        
+    
         SKLog(@"视频:%@",[NSString stringWithFormat:self.urlStr,page]);
         [self.manager POST:[NSString stringWithFormat:self.urlStr,page] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSArray * array = responseObject[@"list"];
@@ -119,10 +119,10 @@
         }];
         
     }
-    [UIView animateWithDuration:2.5 animations:^{
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-    }];
+//    [UIView animateWithDuration:2.5 animations:^{
+//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+//        
+//    }];
     //停止刷新
     [self.myTableView.header endRefreshing];
     [self.myTableView.footer endRefreshing];

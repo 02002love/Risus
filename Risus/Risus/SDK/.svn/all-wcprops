@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/doss/doss_da_rep/!svn/ver/1260/c_cpp_proj/trunk/app/imios/TIMDemo/SDK
+END
+TIM.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/doss/doss_da_rep/!svn/ver/1260/c_cpp_proj/trunk/app/imios/TIMDemo/SDK/TIM.h
+END
+libTIM_SDK.a
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/doss/doss_da_rep/!svn/ver/1260/c_cpp_proj/trunk/app/imios/TIMDemo/SDK/libTIM_SDK.a
+END
+TIMMessage.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/doss/doss_da_rep/!svn/ver/1181/c_cpp_proj/trunk/app/imios/TIMDemo/SDK/TIMMessage.h
+END
+TIMConfig.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/doss/doss_da_rep/!svn/ver/1181/c_cpp_proj/trunk/app/imios/TIMDemo/SDK/TIMConfig.h
+END
+TIMVoice.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/doss/doss_da_rep/!svn/ver/1181/c_cpp_proj/trunk/app/imios/TIMDemo/SDK/TIMVoice.h
+END

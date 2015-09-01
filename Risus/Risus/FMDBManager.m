@@ -10,16 +10,16 @@
 #import "NewModel.h"
 
 static FMDBManager * manager = nil;
-//static NSMutableArray * dataArray;
+
 @interface FMDBManager()
-//@property (nonatomic,strong)NSMutableArray * dataArray;
+
 @property (nonatomic,assign)BOOL  isCollect;
 
 @end
 
 @implementation FMDBManager
 
-
+//单例
 +(instancetype)sharedFMDBManager{
     
     static dispatch_once_t onceToken;
@@ -36,7 +36,7 @@ static FMDBManager * manager = nil;
 -(instancetype)init{
     
     if (self = [super init]) {
-//        dataArray= [NSMutableArray array];
+
         self.fm =[[FMDatabase alloc]initWithPath:[NSString stringWithFormat:@"%@/Documents/data.db",NSHomeDirectory()]];
         if ([self.fm open]) {
             BOOL isSucceed = [self.fm executeUpdate:@"create table favouriter (profile_image,name,create_time,desc,image0,height,width,love,hate,repost,comment,id,voiceuri,videouri,cellHeight)"];

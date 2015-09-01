@@ -1,0 +1,33 @@
+//
+//  TIMMessage.h
+//  TIM_SDK
+//
+//  Created by xiang on 4/29/15.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+@interface TIMMessage : NSObject
+
+@property uint64_t msgID; //消息id
+@property (nonatomic,strong) NSString* fromUserID; //发件人
+@property (nonatomic,strong) NSString* toUserID; //根据会话类型不同含义。单聊时为收件人ID,群聊时为群ID
+@property (nonatomic,strong) NSString* conversationID; //会话ID
+@property uint64_t localUTime; //客户端时间
+@property (nonatomic,strong) NSDate* localDate; //本地时间NSDate
+@property uint64_t serverUTime; //服务器时间
+@property (nonatomic,strong) NSDate* serverDate; //服务器时间 NSDate
+@property (nonatomic,strong) NSString* content; //消息内容 如果contentType为图片时，发送的消息为本地Documents下的图片存储路径，接收的消息为服务器保存的几种格式图片URL地址
+@property int type; //会话类型 0:单聊 1:群聊
+@property BOOL isSend; //是发送还是收到
+@property int contentType; //0:消息 1:图片 2:语音
+
+@property BOOL hasSent; //如果是发送的消息,是否成功送达到服务器
+
+@property uint32_t dataDuration; //数据的时长。目前只有contentType为语音时才有
+
+//不常用
+@property uint64_t seq;
+
+@end
